@@ -24,6 +24,16 @@ public class playerInteract : MonoBehaviour
                     flashInteract.Interact();
                     Destroy(flashInteract.gameObject);
                 }
+                if (collider.TryGetComponent(out eraserinteract eraserinteract))
+                {
+                    eraserinteract.Interact();
+                    Destroy(eraserinteract.gameObject);
+                }
+                if (collider.TryGetComponent(out DiaryInteract diaryInteract))
+                {
+                    diaryInteract.Interact();
+                    Destroy(diaryInteract.gameObject);
+                }
             }
         }
     }

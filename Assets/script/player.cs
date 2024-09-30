@@ -14,6 +14,8 @@ public class player : MonoBehaviour
     [SerializeField] private int moveSpeed;
 
     public GameObject itemPos;
+    public bool isFlash;
+    public bool isEraser;
     
     private RotateToMouse rotateToMouse;
     public bool move = true;
@@ -54,6 +56,15 @@ public class player : MonoBehaviour
             Vector3 moveDir = new Vector3(h, 0, v);
 
             transform.Translate(moveDir * moveSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = 8;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = 3;
         }
     }
 

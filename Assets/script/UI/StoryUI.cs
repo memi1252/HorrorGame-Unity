@@ -10,6 +10,7 @@ public class StoryUI : MonoBehaviour
     public static StoryUI Instance { get; private set; }
 
     [SerializeField] private Button playButton;
+    [SerializeField] private Button clostButton;
 
     private void Awake()
     {
@@ -21,6 +22,12 @@ public class StoryUI : MonoBehaviour
             Time.timeScale = 1;
             RotateToMouse.Instance.anglepause = true;
             SceneManager.LoadScene("Map");
+        });
+        clostButton.onClick.AddListener(() =>
+        {
+            Hide();
+            Time.timeScale = 1;
+            RotateToMouse.Instance.anglepause = true;
         });
     }
 

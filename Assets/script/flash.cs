@@ -9,6 +9,7 @@ public class flash : MonoBehaviour
 
     [SerializeField] private GameObject light;
     
+    
     public bool pickUpFlash = false;
     
     private void Awake()
