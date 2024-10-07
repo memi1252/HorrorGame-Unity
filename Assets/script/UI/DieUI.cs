@@ -19,15 +19,18 @@ public class DieUI : MonoBehaviour
     {
         Instance = this;
         
+        Hide();
+        
         ReStartButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Map");
+            PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
+            SceneManager.LoadScene("main");
         });
         MainMenuButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("MainMenu");
+            PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
+            SceneManager.LoadScene("Mainlobby");
         });
-        Hide();
     }
 
     private void Update()
@@ -38,12 +41,12 @@ public class DieUI : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
-        pauseUI.Instance.pauseUIpasue = true;
+        pauseUI.Instance.pauseUIpasue = false;
     }
 
     public void Hide()
     {
-        pauseUI.Instance.pauseUIpasue = true;
         gameObject.SetActive(false);
+       pauseUI.Instance.pauseUIpasue = true;
     }
 }

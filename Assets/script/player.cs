@@ -30,6 +30,10 @@ public class player : MonoBehaviour
         rotateToMouse = GetComponent<RotateToMouse>();
         Time.timeScale = 1;
     }
+    private void Start()
+    {
+        settingUI.Instance.BGMSlider.value = PlayerPrefs.GetFloat("BGM");
+    }
     
     private void Update()
     {
@@ -72,7 +76,7 @@ public class player : MonoBehaviour
     void Pause(){
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf)
+            if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf && !DieUI.Instance.gameObject.activeSelf)
             {
                 if (pauseUI.Instance.gameObject.activeSelf)
                 {

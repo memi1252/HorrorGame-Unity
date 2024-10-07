@@ -1,29 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class startMemuUI : MonoBehaviour
 {
-    
-    public static startMemuUI Instance { get; private set; }
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button exitButton;
+    [SerializeField] private Button settingButton;
+    [SerializeField] private Button settingssButton;
 
     private void Awake()
     {
-        Instance = this;
+        startButton.onClick.AddListener(() =>
+        {
+            PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
+            SceneManager.LoadScene("Mainlobby");
+        });
+        exitButton.onClick.AddListener(() =>
+        {
+            Application.Quit();
+        });
+        settingButton.onClick.AddListener(() =>
+        {
+            settingUI.Instance.Show();
+        });
+        settingssButton.onClick.AddListener(() =>
+        {
+            settingUI.Instance.Hide();
+        });
     }
 
     private void Start()
     {
-        Hide();
+        settingUI.Instance.BGMSlider.value = PlayerPrefs.GetFloat("BGM");
     }
 
-    public void Show()
+    private void Update()
     {
-        gameObject.SetActive(true);
-    }
-
-    public void Hide()
-    {
-        gameObject.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            settingUI.Instance.Hide();
+        }
     }
 }

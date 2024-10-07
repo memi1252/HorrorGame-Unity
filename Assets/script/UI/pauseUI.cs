@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class pauseUI : MonoBehaviour
@@ -19,7 +20,8 @@ public class pauseUI : MonoBehaviour
         
         exitButton.onClick.AddListener(() =>
         {
-            Application.Quit();
+            PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
+            SceneManager.LoadScene("main");
         });
         settingButton.onClick.AddListener(() =>
         {

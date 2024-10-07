@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxInteract : MonoBehaviour
 {
+    public bool isShow = false;
     public void Interact()
     {
         if (!pauseUI.Instance.gameObject.activeSelf)
@@ -21,6 +22,12 @@ public class BoxInteract : MonoBehaviour
                     }
                     else
                     {
+                        if (!isShow)
+                        {
+                            boxCloseMonster.Instance.monstershow();
+                            story5.Instance.startt();
+                            isShow = true;
+                        }
                         boxUI.Instance.Hide();
                         RotateToMouse.Instance.anglepause = true;
                         RotateToMouse.Instance.pause = true;
