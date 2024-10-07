@@ -9,20 +9,23 @@ public class InventoryUI : MonoBehaviour
 {
     public static InventoryUI Instance { get; private set; }
     
-    [SerializeField] private GameObject flashobject;
-    [SerializeField] private GameObject eraserobject;
-    [SerializeField] private GameObject crossobject;
+    [SerializeField] private GameObject flashObject;
+    [SerializeField] private GameObject eraserObject;
+    [SerializeField] private GameObject crossObject;
+    [SerializeField] private GameObject baseBallObject;
 
     public bool flash = false;
     public bool eraser = false;
     public bool cross = false;
+    public bool baseBall = false;
 
     private void Awake()
     {
         Instance = this;
-        flashobject.SetActive(false);
-        eraserobject.SetActive(false);
-        crossobject.SetActive(false);
+        flashObject.SetActive(false);
+        eraserObject.SetActive(false);
+        crossObject.SetActive(false);
+        baseBallObject.SetActive(false);
     }
     private void Start()
     {
@@ -33,15 +36,35 @@ public class InventoryUI : MonoBehaviour
     {
         if (flash)
         {
-            flashobject.SetActive(true);
-        }   
+            flashObject.SetActive(true);
+        }
+        else
+        {
+            flashObject.SetActive(false);
+        }
         if (eraser)
         {
-            flashobject.SetActive(true);
+            eraserObject.SetActive(true);
+        }
+        else
+        {
+            eraserObject.SetActive(false);
         }
         if (cross)
         {
-            crossobject.SetActive(true);
+            crossObject.SetActive(true);
+        }
+        else
+        {
+            crossObject.SetActive(false);
+        }
+        if (baseBall)
+        {
+            baseBallObject.SetActive(true);
+        }
+        else
+        {
+            baseBallObject.SetActive(false);
         }
         RotateToMouse.Instance.pause = false;
     }

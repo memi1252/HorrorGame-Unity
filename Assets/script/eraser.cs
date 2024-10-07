@@ -11,6 +11,7 @@ public class eraser : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             storyEraser.Instance.dd();
+            InventoryUI.Instance.eraser = true;
             Destroy(gameObject);
         }
     }

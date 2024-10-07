@@ -72,7 +72,7 @@ public class player : MonoBehaviour
     void Pause(){
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!storyinteract.Instance.interact)
+            if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf)
             {
                 if (pauseUI.Instance.gameObject.activeSelf)
                 {
@@ -83,26 +83,42 @@ public class player : MonoBehaviour
                 }
                 else
                 {
-                    Time.timeScale = 0;   
+                    Time.timeScale = 0;
                     pauseUI.Instance.Show();
                     RotateToMouse.Instance.anglepause = false;
                     RotateToMouse.Instance.pause = false;
                 }
             }
-            if (settingUI.Instance.gameObject.activeSelf)
-            {
+            if (settingUI.Instance.gameObject.activeSelf) {
                 settingUI.Instance.Hide();
-                Debug.Log(Time.timeScale);
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+            if (boxUI.Instance.gameObject.activeSelf)
+            {
+                RotateToMouse.Instance.anglepause = true;
+                RotateToMouse.Instance.pause = true;
+                Time.timeScale = 1;
+            }
             if (StoryUI.Instance.gameObject.activeSelf)
             {
                 StoryUI.Instance.Hide();
                 Time.timeScale = 1;
                 RotateToMouse.Instance.anglepause = true;
                 storyinteract.Instance.interact = false;
+            }
+
+            if (InventoryUI.Instance.gameObject.activeSelf)
+            {
+                InventoryUI.Instance.Hide();
+                Time.timeScale = 1;
+                RotateToMouse.Instance.anglepause = true;
+                RotateToMouse.Instance.pause = true;
+            }
+            if (DiaryUI.Instance.gameObject.activeSelf)
+            {
+                DiaryUI.Instance.Hide();
+                Time.timeScale = 1;
+                RotateToMouse.Instance.anglepause = true;
+                RotateToMouse.Instance.pause = true;
             }
         }
     }
@@ -130,12 +146,17 @@ public class player : MonoBehaviour
                 InventoryUI.Instance.Hide();
                 Time.timeScale = 1;
                 RotateToMouse.Instance.anglepause = true;
+                RotateToMouse.Instance.pause = true;
             }
             else
             {
-                InventoryUI.Instance.Show();
-                Time.timeScale = 0;
-                RotateToMouse.Instance.anglepause = false;
+                if(!pauseUI.Instance.gameObject.activeSelf && !boxUI.Instance.gameObject.activeSelf
+                   && !settingUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf) {
+                    InventoryUI.Instance.Show();
+                    Time.timeScale = 0;
+                    RotateToMouse.Instance.anglepause = false;
+                    RotateToMouse.Instance.pause = false;
+                }
             }
         }
     }

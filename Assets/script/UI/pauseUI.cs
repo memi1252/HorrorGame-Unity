@@ -23,9 +23,12 @@ public class pauseUI : MonoBehaviour
         });
         settingButton.onClick.AddListener(() =>
         {
-            settingUI.Instance.Show();
-            Hide();
-            pauseUIpasue = true;
+            if (!InventoryUI.Instance.gameObject.activeSelf && !boxUI.Instance.gameObject.activeSelf)
+            {
+                settingUI.Instance.Show();
+                Hide();
+                pauseUIpasue = true;
+            }
         });
     }
 

@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class settingUI : MonoBehaviour
 {
     public static settingUI Instance { get; private set; }
+    
+    [SerializeField] public Slider BGMSlider;
 
     private void Awake()
     {

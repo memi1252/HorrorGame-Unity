@@ -10,29 +10,38 @@ public class playerInteract : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            float interactRange = 0.5f;
-            Collider[] collidersArray = Physics.OverlapSphere(transform.position, interactRange);
-            foreach (Collider collider in collidersArray)
+            if (!pauseUI.Instance.gameObject.activeSelf && !settingUI.Instance.gameObject.activeSelf)
             {
-                if (collider.TryGetComponent(out storyinteract storyinteract))
+                float interactRange = 0.5f;
+                Collider[] collidersArray = Physics.OverlapSphere(transform.position, interactRange);
+                foreach (Collider collider in collidersArray)
                 {
-                    storyinteract.Interact();
-                }
+                    if (collider.TryGetComponent(out storyinteract storyinteract))
+                    {
+                        storyinteract.Interact();
+                    }
 
-                if (collider.TryGetComponent(out flashInteract flashInteract))
-                {
-                    flashInteract.Interact();
-                    Destroy(flashInteract.gameObject);
-                }
-                if (collider.TryGetComponent(out eraserinteract eraserinteract))
-                {
-                    eraserinteract.Interact();
-                    Destroy(eraserinteract.gameObject);
-                }
-                if (collider.TryGetComponent(out DiaryInteract diaryInteract))
-                {
-                    diaryInteract.Interact();
-                    Destroy(diaryInteract.gameObject);
+                    if (collider.TryGetComponent(out flashInteract flashInteract))
+                    {
+                        flashInteract.Interact();
+                        Destroy(flashInteract.gameObject);
+                    }
+
+                    if (collider.TryGetComponent(out eraserinteract eraserinteract))
+                    {
+                        eraserinteract.Interact();
+                        Destroy(eraserinteract.gameObject);
+                    }
+
+                    if (collider.TryGetComponent(out DiaryInteract diaryInteract))
+                    {
+                        diaryInteract.Interact();
+                    }
+
+                    if (collider.TryGetComponent(out BoxInteract boxInteract))
+                    {
+                        boxInteract.Interact();
+                    }
                 }
             }
         }
