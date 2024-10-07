@@ -37,6 +37,7 @@ public class player : MonoBehaviour
         UpdateRotate();
         Pause();
         Die();
+        Inventory();
     }
     
     void UpdateRotate()
@@ -117,6 +118,24 @@ public class player : MonoBehaviour
                 DieUI.Instance.Show();
                 RotateToMouse.Instance.pause = false;
                 Time.timeScale = 0;
+            }
+        }
+    }
+    void Inventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (InventoryUI.Instance.gameObject.activeSelf)
+            {
+                InventoryUI.Instance.Hide();
+                Time.timeScale = 1;
+                RotateToMouse.Instance.anglepause = true;
+            }
+            else
+            {
+                InventoryUI.Instance.Show();
+                Time.timeScale = 0;
+                RotateToMouse.Instance.anglepause = false;
             }
         }
     }

@@ -22,5 +22,6 @@ public class flashInteract : MonoBehaviour
         flash.Instance.pickUpFlash = true;
         Light.gameObject.SetActive(false);
         player.Instance.isFlash = true;
+        InventoryUI.Instance.flash = true;
     }
 }
