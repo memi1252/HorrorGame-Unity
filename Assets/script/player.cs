@@ -98,6 +98,12 @@ public class player : MonoBehaviour
             }
             if (boxUI.Instance.gameObject.activeSelf)
             {
+                if (!BoxInteract.Instance.isShow)
+                {
+                    boxCloseMonster.Instance.monstershow();
+                    story5.Instance.startt();
+                    BoxInteract.Instance.isShow = true;
+                }
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
                 Time.timeScale = 1;

@@ -1,10 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxInteract : MonoBehaviour
 {
+    public static BoxInteract Instance { get; private set; }
+    
     public bool isShow = false;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void Interact()
     {
         if (!pauseUI.Instance.gameObject.activeSelf)

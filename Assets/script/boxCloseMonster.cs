@@ -23,7 +23,7 @@ public class boxCloseMonster : MonoBehaviour
 
     IEnumerator d()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         Hide();
     }
 

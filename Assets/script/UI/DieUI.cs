@@ -19,8 +19,6 @@ public class DieUI : MonoBehaviour
     {
         Instance = this;
         
-        Hide();
-        
         ReStartButton.onClick.AddListener(() =>
         {
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
@@ -31,6 +29,11 @@ public class DieUI : MonoBehaviour
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
             SceneManager.LoadScene("Mainlobby");
         });
+    }
+
+    private void Start()
+    {
+        Hide();
     }
 
     private void Update()
@@ -47,6 +50,6 @@ public class DieUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-       pauseUI.Instance.pauseUIpasue = true;
+        pauseUI.Instance.pauseUIpasue = true;
     }
 }
