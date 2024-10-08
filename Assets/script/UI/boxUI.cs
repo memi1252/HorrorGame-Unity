@@ -73,6 +73,8 @@ public class boxUI : MonoBehaviour
 
     private void Update()
     {
+        player.Instance.h = 0;
+        player.Instance.v =0;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Hide();
@@ -98,6 +100,8 @@ public class boxUI : MonoBehaviour
 
     public void Show()
     {
+        player.Instance.h = 0;
+        player.Instance.v =0;
         gameObject.SetActive(true);
     }
     

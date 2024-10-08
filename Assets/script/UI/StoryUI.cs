@@ -32,6 +32,12 @@ public class StoryUI : MonoBehaviour
         });
     }
 
+    private void Update()
+    {
+        player.Instance.h = 0;
+        player.Instance.v =0;
+    }
+
     private void Start()
     {
         Hide();
@@ -40,6 +46,8 @@ public class StoryUI : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        player.Instance.h = 0;
+        player.Instance.v =0;
         RotateToMouse.Instance.pause = false;
     }
 

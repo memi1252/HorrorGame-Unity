@@ -34,6 +34,8 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
+        player.Instance.h = 0;
+        player.Instance.v =0;
         if (flash)
         {
             flashObject.SetActive(true);
@@ -72,6 +74,8 @@ public class InventoryUI : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        player.Instance.h = 0;
+        player.Instance.v =0;
     }
     
     public void Hide()

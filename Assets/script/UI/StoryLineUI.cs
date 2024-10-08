@@ -12,10 +12,10 @@ public class StoryLineUI : MonoBehaviour
         Instance = this;
         Hide();
     }
-
     public void Show()
     {
         gameObject.SetActive(true);
+        
     }
 
     public void Hide()

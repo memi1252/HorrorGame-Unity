@@ -39,11 +39,15 @@ public class DieUI : MonoBehaviour
     private void Update()
     {
         SurvivalTImeText.text = $"생존 시간 :{(int)playTime.Instance.playTimes/60}:{(int)playTime.Instance.playTimes%60}";
+        player.Instance.h = 0;
+        player.Instance.v =0;
     }
 
     public void Show()
     {
         gameObject.SetActive(true);
+        player.Instance.h = 0;
+        player.Instance.v =0;
         pauseUI.Instance.pauseUIpasue = false;
     }
 

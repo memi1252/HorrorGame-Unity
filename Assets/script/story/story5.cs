@@ -39,7 +39,7 @@ public class story5 : MonoBehaviour
     IEnumerator sto2()
     {
         yield return new WaitForSeconds(1.5f);
-        storyText.text = "주인공 : 빨리 나머지 아이템이랑 제단을 찾아야해!!";
+        storyText.text = "주인공 : 또 나오기전에 도망가자!!";
         StartCoroutine(sto3());
     }
     IEnumerator sto3()

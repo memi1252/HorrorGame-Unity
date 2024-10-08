@@ -7,13 +7,17 @@ using UnityEngine.UI;
 
 public class startMemuUI : MonoBehaviour
 {
+    public static startMemuUI Instance { get; private set; }
+    
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button settingssButton;
+    [SerializeField] private Button exitbutton2;
 
     private void Awake()
     {
+        Instance = this;
         startButton.onClick.AddListener(() =>
         {
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
@@ -31,6 +35,10 @@ public class startMemuUI : MonoBehaviour
         {
             settingUI.Instance.Hide();
         });
+        exitbutton2.onClick.AddListener(() =>
+        {
+            Application.Quit();
+        });
     }
 
     private void Start()
@@ -40,6 +48,10 @@ public class startMemuUI : MonoBehaviour
 
     private void Update()
     {
+        RotateToMouse.Instance.anglepause = false;
+        RotateToMouse.Instance.pause = false;
+        player.Instance.h = 0;
+        player.Instance.v =0;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             settingUI.Instance.Hide();

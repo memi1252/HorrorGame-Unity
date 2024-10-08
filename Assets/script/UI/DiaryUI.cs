@@ -17,9 +17,17 @@ public class DiaryUI : MonoBehaviour
         Hide();
     }
 
+    private void Update()
+    {
+        player.Instance.h = 0;
+        player.Instance.v =0;
+    }
+
     public void Show()
     {
         gameObject.SetActive(true);
+        player.Instance.h = 0;
+        player.Instance.v =0;
         RotateToMouse.Instance.pause = false;
     }
 

@@ -34,6 +34,12 @@ public class pauseUI : MonoBehaviour
         });
     }
 
+    private void Update()
+    {
+        player.Instance.h = 0;
+        player.Instance.v =0;
+    }
+
     private void Start()
     {
         Hide();
@@ -42,6 +48,8 @@ public class pauseUI : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        player.Instance.h = 0;
+        player.Instance.v =0;
         pauseUIpasue = true;
     }
 

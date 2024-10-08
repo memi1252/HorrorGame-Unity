@@ -21,6 +21,9 @@ public class player : MonoBehaviour
     public bool move = true;
     public bool die;
     float time = 4f;
+    public float h;
+    public float v;
+    
 
  
     void Awake()
@@ -42,6 +45,7 @@ public class player : MonoBehaviour
         Pause();
         Die();
         Inventory();
+        ToggleCursorVisibility();
     }
     
     void UpdateRotate()
@@ -55,8 +59,8 @@ public class player : MonoBehaviour
     {
         if (move)
         {
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
 
             Vector3 moveDir = new Vector3(h, 0, v);
 
@@ -161,13 +165,27 @@ public class player : MonoBehaviour
             else
             {
                 if(!pauseUI.Instance.gameObject.activeSelf && !boxUI.Instance.gameObject.activeSelf
-                   && !settingUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf) {
+                   && !settingUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf
+                   && !startMemuUI.Instance.gameObject.activeSelf && !DieUI.Instance.gameObject.activeSelf) {
                     InventoryUI.Instance.Show();
                     Time.timeScale = 0;
                     RotateToMouse.Instance.anglepause = false;
                     RotateToMouse.Instance.pause = false;
                 }
             }
+        }
+    }
+    void ToggleCursorVisibility()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
