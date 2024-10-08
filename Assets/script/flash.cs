@@ -16,6 +16,7 @@ public class flash : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        pauseUI.Instance.pauseUIpasue = false;
     }
 
     private void Update()
@@ -26,6 +27,7 @@ public class flash : MonoBehaviour
             {
                 if (light.activeSelf == true)
                 {
+                    
                     light.SetActive(false);
                 }
                 else

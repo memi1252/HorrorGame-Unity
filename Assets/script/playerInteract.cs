@@ -42,6 +42,10 @@ public class playerInteract : MonoBehaviour
                     {
                         boxInteract.Interact();
                     }
+                    if(collider.TryGetComponent(out notClostChestInteract notClostChestInteract))
+                    {
+                        notClostChestInteract.Interact();
+                    }
                 }
             }
         }
