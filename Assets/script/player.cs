@@ -80,7 +80,10 @@ public class player : MonoBehaviour
     void Pause(){
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf && !DieUI.Instance.gameObject.activeSelf)
+            if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf 
+                                                 && !DiaryUI.Instance.gameObject.activeSelf && !DieUI.Instance.gameObject.activeSelf
+                                                 && !OpenChestUI.Instance.gameObject.activeSelf && !settingUI.Instance.gameObject.activeSelf
+                                                 && !boxUI.Instance.gameObject.activeSelf)
             {
                 if (pauseUI.Instance.gameObject.activeSelf)
                 {
@@ -134,6 +137,14 @@ public class player : MonoBehaviour
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
             }
+
+            if (OpenChestUI.Instance.gameObject.activeSelf)
+            {
+                OpenChestUI.Instance.Hide();
+                move = true;
+                RotateToMouse.Instance.anglepause = true;
+                RotateToMouse.Instance.pause = true;
+            }
         }
     }
 
@@ -166,7 +177,8 @@ public class player : MonoBehaviour
             {
                 if(!pauseUI.Instance.gameObject.activeSelf && !boxUI.Instance.gameObject.activeSelf
                    && !settingUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf
-                   && !startMemuUI.Instance.gameObject.activeSelf && !DieUI.Instance.gameObject.activeSelf) {
+                   && !DieUI.Instance.gameObject.activeSelf && !StoryUI.Instance.gameObject.activeSelf 
+                   && !OpenChestUI.Instance.gameObject.activeSelf) {
                     InventoryUI.Instance.Show();
                     Time.timeScale = 0;
                     RotateToMouse.Instance.anglepause = false;

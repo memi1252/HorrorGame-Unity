@@ -40,7 +40,6 @@ public class soundManager : MonoBehaviour
                 {
                     runAudioSource.Play();
                     walkAudioSource.Stop();
-                    Debug.Log("Run audio started");
                 }
             }
             else
@@ -49,7 +48,6 @@ public class soundManager : MonoBehaviour
                 {
                     walkAudioSource.Play();
                     runAudioSource.Stop();
-                    Debug.Log("Walk audio started");
                 }
             }
         }
@@ -58,12 +56,10 @@ public class soundManager : MonoBehaviour
             if (walkAudioSource.isPlaying)
             {
                 walkAudioSource.Stop();
-                Debug.Log("Walk audio stopped");
             }
             if (runAudioSource.isPlaying)
             {
                 runAudioSource.Stop();
-                Debug.Log("Run audio stopped");
             }
         }
     }
