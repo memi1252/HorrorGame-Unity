@@ -21,7 +21,7 @@ public class StoryUI : MonoBehaviour
             Hide();
             Time.timeScale = 1;
             RotateToMouse.Instance.anglepause = true;
-            flash.Instance.pickUpFlash = false;
+            //flash.Instance.pickUpFlash = false;
             SceneManager.LoadScene("Map");
         });
         clostButton.onClick.AddListener(() =>

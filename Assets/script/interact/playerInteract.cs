@@ -50,6 +50,15 @@ public class playerInteract : MonoBehaviour
                     {
                         openChestInteract.Interact();
                     }
+                    if (collider.TryGetComponent(out mirrorStandInteract mirrorStandInteract))
+                    {
+                        mirrorStandInteract.Interact();
+                    }
+                    if(collider.TryGetComponent(out mirrorInteract mirrorInteract))
+                    {
+                        mirrorInteract.Interact();
+                        Destroy(mirrorInteract.gameObject);
+                    }
                 }
             }
         }

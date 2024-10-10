@@ -14,12 +14,14 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject crossObject;
     [SerializeField] private GameObject baseBallObject;
     [SerializeField] private GameObject nailObject;
+    [SerializeField] private GameObject mirrorObject;
 
     public bool flash = false;
     public bool eraser = false;
     public bool cross = false;
     public bool baseBall = false;
     public bool nail = false;
+    public bool mirror = false;
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class InventoryUI : MonoBehaviour
         crossObject.SetActive(false);
         baseBallObject.SetActive(false);
         nailObject.SetActive(false);
+        mirrorObject.SetActive(false);
     }
     private void Start()
     {
@@ -79,6 +82,14 @@ public class InventoryUI : MonoBehaviour
         else
         {
             nailObject.SetActive(false);
+        }
+        if (mirror)
+        {
+            mirrorObject.SetActive(true);
+        }
+        else
+        {
+            mirrorObject.SetActive(false);
         }
         RotateToMouse.Instance.pause = false;
     }

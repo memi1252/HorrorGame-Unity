@@ -5,6 +5,10 @@ public class mirrorStandInteract : MonoBehaviour
 {
     public void Interact()
     {
-        gameObject.transform.rotation = Quaternion.Euler(0, +90, 0);
+        RotateBy90Degrees();
+    }
+    private void RotateBy90Degrees()
+    {
+        transform.Rotate(0, 90, 0);
     }
 }

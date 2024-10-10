@@ -23,6 +23,8 @@ public class player : MonoBehaviour
     float time = 4f;
     public float h;
     public float v;
+    public float mouseX;
+    public float mouseY;
     
 
  
@@ -50,8 +52,8 @@ public class player : MonoBehaviour
     
     void UpdateRotate()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
         rotateToMouse.CalculateRotation(mouseX, mouseY);
     }
 
@@ -102,6 +104,9 @@ public class player : MonoBehaviour
             }
             if (settingUI.Instance.gameObject.activeSelf) {
                 settingUI.Instance.Hide();
+                RotateToMouse.Instance.anglepause = true;
+                RotateToMouse.Instance.pause = true;
+                Time.timeScale = 1;
             }
             if (boxUI.Instance.gameObject.activeSelf)
             {

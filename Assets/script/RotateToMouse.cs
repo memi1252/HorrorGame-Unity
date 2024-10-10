@@ -13,8 +13,8 @@ public class RotateToMouse : MonoBehaviour
     private float limitMinX = -80; 
     private float limitMaxX = 50; 
  
-    private float eulerAngleX; 
-    private float eulerAngleY;
+    public float eulerAngleX; 
+    public float eulerAngleY;
 
     public bool anglepause = true;
     public bool pause;
