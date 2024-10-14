@@ -7,9 +7,9 @@ using UnityEngine;
 public class story6 : MonoBehaviour
 {
     public static story6 Instance { get; private set; }
-    
-    [SerializeField] private TextMeshProUGUI storyText;
 
+    [SerializeField] private TextMeshProUGUI storyText;
+    
 
     private void Awake()
     {

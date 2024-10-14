@@ -48,12 +48,14 @@ public class DieUI : MonoBehaviour
         gameObject.SetActive(true);
         player.Instance.h = 0;
         player.Instance.v =0;
+        player.Instance.ui = true;
         pauseUI.Instance.pauseUIpasue = false;
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
+        player.Instance.ui = false;
         pauseUI.Instance.pauseUIpasue = true;
     }
 }

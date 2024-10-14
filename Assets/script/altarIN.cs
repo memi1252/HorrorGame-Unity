@@ -6,14 +6,22 @@ using System.Collections;
 
 public class altarIN : MonoBehaviour
 {
+    public static altarIN Instance { get; private set; }
+
+    [SerializeField] private GameObject monster;
+    [SerializeField] private GameObject mirrorbeam;
+    [SerializeField] private GameObject monsterlight;
+    
     Animator animator;
-    private float time = 12f;
+    private float time = 13f;
     private bool dd = false;
+    public bool altar = false;
     
 
     private void Awake()
     {
-        animator = player.Instance.gameObject.GetComponent<Animator>();
+        Instance = this;
+        monster.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,10 +31,13 @@ public class altarIN : MonoBehaviour
             if (dd == false)
             {
             other.gameObject.transform.position = new Vector3(-27.677f, 20.148f, -307.936f);
+            other.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             RotateToMouse.Instance.eulerAngleX = 0;
             RotateToMouse.Instance.eulerAngleY = 180;
-            animator.SetBool("in", true);
+            player.Instance.playerAnimator.SetBool("in", true);
             StartCoroutine(ss());
+            monster.SetActive(true);
+            mirrorbeam.SetActive(false);
             dd = true;
             }
             RotateToMouse.Instance.anglepause = false;
@@ -44,9 +55,12 @@ public class altarIN : MonoBehaviour
             time-=Time.deltaTime;
             if (time < 0)
             {
+                altar = true;
                 RotateToMouse.Instance.anglepause = true;
                 RenderSettings.fogDensity = 0.07f;
+                monsterlight.SetActive(false);
                 player.Instance.move = true;
+                time = 99999999999f;
             }
         }
     }
@@ -54,6 +68,6 @@ public class altarIN : MonoBehaviour
     IEnumerator ss()
     {
         yield return new WaitForSeconds(0.1f);
-        animator.SetBool("in", false);
+        player.Instance.playerAnimator.SetBool("in", false);
     }
 }

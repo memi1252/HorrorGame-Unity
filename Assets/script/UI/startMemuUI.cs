@@ -34,6 +34,7 @@ public class startMemuUI : MonoBehaviour
         settingssButton.onClick.AddListener(() =>
         {
             settingUI.Instance.Hide();
+            player.Instance.ui = false;
         });
         exitbutton2.onClick.AddListener(() =>
         {

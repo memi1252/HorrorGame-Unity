@@ -1,11 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class mirrorBeam : MonoBehaviour
 {
+    public static mirrorBeam Instance { get; private set; }
+    
     [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private GameObject mirror;
+    [SerializeField] public GameObject mirror;
+    public int reflections;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -21,7 +31,7 @@ public class mirrorBeam : MonoBehaviour
         Ray ray = new Ray(currentPosition, direction);
         RaycastHit hit;
         int maxReflections = 4; // Set to 4 to stop after hitting the fourth mirror
-        int reflections = 0;
+        reflections = 0;
 
         // List to store the positions for the LineRenderer
         List<Vector3> positions = new List<Vector3>();
@@ -64,7 +74,8 @@ public class mirrorBeam : MonoBehaviour
 
         if (reflections == 4)
         {
-            mirror.gameObject.SetActive(true);
+            mirror.SetActive(true);
+            reflections++;
         }
     }
 }

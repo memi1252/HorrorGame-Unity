@@ -12,14 +12,15 @@ public class player : MonoBehaviour
     public static player Instance { get; private set; }
     
     [SerializeField] private int moveSpeed;
-
     public GameObject itemPos;
     public bool isFlash;
     public bool isEraser;
     
     private RotateToMouse rotateToMouse;
+    public Animator playerAnimator;
     public bool move = true;
     public bool die;
+    public bool ui = false;
     float time = 4f;
     public float h;
     public float v;
@@ -33,6 +34,7 @@ public class player : MonoBehaviour
         Instance = this;
         
         rotateToMouse = GetComponent<RotateToMouse>();
+        playerAnimator = GetComponent<Animator>();
         Time.timeScale = 1;
     }
     private void Start()
@@ -85,7 +87,7 @@ public class player : MonoBehaviour
             if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf 
                                                  && !DiaryUI.Instance.gameObject.activeSelf && !DieUI.Instance.gameObject.activeSelf
                                                  && !OpenChestUI.Instance.gameObject.activeSelf && !settingUI.Instance.gameObject.activeSelf
-                                                 && !boxUI.Instance.gameObject.activeSelf)
+                                                 && !boxUI.Instance.gameObject.activeSelf && !offeringUI.Instance.gameObject.activeSelf)
             {
                 if (pauseUI.Instance.gameObject.activeSelf)
                 {
@@ -150,6 +152,14 @@ public class player : MonoBehaviour
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
             }
+
+            if (offeringUI.Instance.gameObject.activeSelf)
+            {
+                offeringUI.Instance.Hide();
+                move = true;
+                RotateToMouse.Instance.anglepause = true;
+                RotateToMouse.Instance.pause = true;
+            }
         }
     }
 
@@ -160,9 +170,14 @@ public class player : MonoBehaviour
             time -= Time.deltaTime;
             if (time <= 0)
             {
-                pauseUI.Instance.pauseUIpasue = true;
+                offeringUI.Instance.Hide();
                 DieUI.Instance.Show();
+                pauseUI.Instance.pauseUIpasue = true;
                 RotateToMouse.Instance.pause = false;
+                RotateToMouse.Instance.anglepause = false;
+                move = false;
+                h = 0;
+                v = 0;
                 Time.timeScale = 0;
             }
         }
@@ -194,15 +209,18 @@ public class player : MonoBehaviour
     }
     void ToggleCursorVisibility()
     {
-        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        if (!ui)
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+            {
+                RotateToMouse.Instance.pause = false;
+                RotateToMouse.Instance.anglepause = false;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
+            {
+                RotateToMouse.Instance.pause = true;
+                RotateToMouse.Instance.anglepause = true;
+            }
         }
     }
 }

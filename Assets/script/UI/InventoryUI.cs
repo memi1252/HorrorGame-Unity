@@ -98,11 +98,13 @@ public class InventoryUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         player.Instance.h = 0;
+        player.Instance.ui = true;
         player.Instance.v =0;
     }
     
     public void Hide()
     {
+        player.Instance.ui = false;
         gameObject.SetActive(false);
     }
 }

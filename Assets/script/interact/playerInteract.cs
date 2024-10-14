@@ -57,7 +57,12 @@ public class playerInteract : MonoBehaviour
                     if(collider.TryGetComponent(out mirrorInteract mirrorInteract))
                     {
                         mirrorInteract.Interact();
+                        mirrorBeam.Instance.mirror = new GameObject();
                         Destroy(mirrorInteract.gameObject);
+                    }
+                    if(collider.TryGetComponent(out offeringInteract offeringInteract))
+                    {
+                        offeringInteract.Interact();
                     }
                 }
             }

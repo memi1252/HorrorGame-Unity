@@ -37,6 +37,7 @@ public class DiaryUI : MonoBehaviour
 
     public void Show()
     {
+        player.Instance.ui = true;
         gameObject.SetActive(true);
         player.Instance.h = 0;
         player.Instance.v =0;
@@ -46,6 +47,7 @@ public class DiaryUI : MonoBehaviour
 
     public void Hide()
     {
+        player.Instance.ui = false;
         gameObject.SetActive(false);
         RotateToMouse.Instance.pause = true;
     }

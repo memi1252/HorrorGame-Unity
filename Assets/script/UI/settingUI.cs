@@ -26,6 +26,7 @@ public class settingUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         player.Instance.h = 0;
+        player.Instance.ui = true;
         player.Instance.v =0;
     }
 

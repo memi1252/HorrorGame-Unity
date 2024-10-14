@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class monster : MonoBehaviour
 {
+    public static monster Instance { get; private set; }
+    
     [SerializeField] private GameObject playerDiePos;
     
     public Transform target;
@@ -14,6 +16,11 @@ public class monster : MonoBehaviour
     private NavMeshAgent nmAgent;
     private Animator animator;
     private bool die = false;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -28,7 +35,8 @@ public class monster : MonoBehaviour
         }
         else
         {
-            nmAgent.SetDestination(target.position);
+            if(altarIN.Instance.altar)
+                nmAgent.SetDestination(target.position);
         }
         
     }
@@ -39,6 +47,7 @@ public class monster : MonoBehaviour
         {
             player.Instance.move = false;
             RotateToMouse.Instance.anglepause = false;
+            RotateToMouse.Instance.pause = false;
             playerDiePos.SetActive(true);
             die = true;
             player.Instance.die = true;

@@ -120,11 +120,13 @@ public class OpenChestUI : MonoBehaviour
     {
         player.Instance.h = 0;
         player.Instance.v = 0;
+        player.Instance.ui = true;
         gameObject.SetActive(true);
     }
 
     public void Hide()
     {
+        player.Instance.ui = false;
         gameObject.SetActive(false);
     }
 }

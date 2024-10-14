@@ -1,0 +1,213 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8612006506802378524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60a04a9172dea34da5cc24c941eb990, type: 3}
+  m_Name: RenderingNode
+  m_EditorClassIdentifier: 
+  guid: 02985a98-3650-4790-a133-c9e8daa86ace
+  groupGuid: 
+  position: {x: 0, y: 0}
+  renderEnabled: 1
+  title: RenderingNode
+  isPinned: 0
+  pinnedPosition: {x: 0, y: 0}
+  _nodeUIState:
+    m_isExpanded: 1
+  portedFieldsContainer: []
+  m_initialized: 1
+  m_runtimeGraphicsFormat: 48
+  size:
+    m_outputSize: 0
+    m_customValue: {x: 1920, y: 1080}
+    x: 0
+    y: 0
+    m_version: 2
+  camera:
+    exposedName: c9a71bf1233505c469e8736796b9f97a
+    defaultValue: {fileID: 0}
+  _renderMaterial:
+    overrideState: 0
+    value: {fileID: 0}
+  _lightShadows:
+    overrideState: 0
+    value: 0
+  includeChildRenderers: 1
+  output: {fileID: 0}
+  m_postProcessStackController:
+    m_postProcessProfile: {fileID: 0}
+    m_ppProfile:
+      overrideState: 1
+      value: {fileID: 0}
+    m_antialiasingMode:
+      overrideState: 0
+      value: 0
+    m_temporalAntialiasing:
+      jitterSpread: 0.75
+      sharpness: 0.25
+      stationaryBlending: 0.95
+      motionBlending: 0.85
+    m_subpixelMorphologicalAntialiasing:
+      quality: 2
+    m_fastApproximateAntialiasing:
+      fastMode: 0
+      keepAlpha: 0
+    m_volumeRef:
+      exposedName: 
+      defaultValue: {fileID: 0}
+    m_ppVolumeController:
+      m_globalVolumeRef:
+        exposedName: 97eaa4ef5a1ff344f950fa3c9a74c99f
+        defaultValue: {fileID: 0}
+  _cullingMask:
+    overrideState: 0
+    value:
+      serializedVersion: 2
+      m_Bits: 4294967295
+  clearFlags:
+    overrideState: 0
+    value: 2
+  backgroundColor:
+    overrideState: 0
+    value: {r: 0, g: 0, b: 0, a: 1}
+  forceBackgroundAlphaToZero: 0
+--- !u!114 &-8260669624335652224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a153ecc1e0509478c2da5dc293ab68, type: 3}
+  m_Name: FinalOutputNode
+  m_EditorClassIdentifier: 
+  guid: 8a0448e3-7ac0-4cd0-86ac-049e6d8ea1d3
+  groupGuid: 
+  position: {x: 0, y: 0}
+  renderEnabled: 1
+  title: FinalOutputNode
+  isPinned: 0
+  pinnedPosition: {x: 0, y: 0}
+  _nodeUIState:
+    m_isExpanded: 1
+  portedFieldsContainer: []
+  m_initialized: 1
+  m_postProcessStackController:
+    m_postProcessProfile: {fileID: 0}
+    m_ppProfile:
+      overrideState: 1
+      value: {fileID: 0}
+    m_antialiasingMode:
+      overrideState: 0
+      value: 0
+    m_temporalAntialiasing:
+      jitterSpread: 0.75
+      sharpness: 0.25
+      stationaryBlending: 0.95
+      motionBlending: 0.85
+    m_subpixelMorphologicalAntialiasing:
+      quality: 2
+    m_fastApproximateAntialiasing:
+      fastMode: 0
+      keepAlpha: 0
+    m_volumeRef:
+      exposedName: 
+      defaultValue: {fileID: 0}
+    m_ppVolumeController:
+      m_globalVolumeRef:
+        exposedName: 
+        defaultValue: {fileID: 0}
+  m_cameraRef:
+    exposedName: 83a5310e5f001364e9c24112d8639a28
+    defaultValue: {fileID: 0}
+  m_enabled: 0
+--- !u!114 &-5681322532388846318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d5921db1d18c54bbd6c8a94376a933, type: 3}
+  m_Name: LayerNode
+  m_EditorClassIdentifier: 
+  guid: cc9b32fb-29f1-4645-ab29-fe90b4bc0ff1
+  groupGuid: 
+  position: {x: 0, y: 0}
+  renderEnabled: 1
+  title: LayerNode
+  isPinned: 0
+  pinnedPosition: {x: 0, y: 0}
+  _nodeUIState:
+    m_isExpanded: 1
+  portedFieldsContainer: []
+  m_initialized: 1
+  m_exposeAsComponent: 0
+  m_config:
+    opacity: 1
+  m_proxy: {fileID: 0}
+  enabled: 1
+  blendMode: 17
+  useInputAlpha: 1
+  maskChannel: 3
+  premultipliedAlpha: 0
+  m_exportMode: 0
+  m_rtExporter:
+    m_exportRenderTexture:
+      overrideState: 1
+      value: {fileID: 0}
+--- !u!114 &-3107338981611646836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd54056a23d0e6e42ac3033150305e31, type: 3}
+  m_Name: '63993141-e28d-45ff-9d43-8c4011dac5a0: RenderingNode.output -> LayerNode.input'
+  m_EditorClassIdentifier: 
+  input: {fileID: -5681322532388846318}
+  output: {fileID: -8612006506802378524}
+  inputFieldName: input
+  outputFieldName: output
+  guid: 63993141-e28d-45ff-9d43-8c4011dac5a0
+  useProperty: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a5ba7e25024bdc8c2b08d4ce788a16, type: 3}
+  m_Name: CompositorGraph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -8612006506802378524}
+  edges:
+  - {fileID: -3107338981611646836}
+  layers:
+  - {fileID: -5681322532388846318}
+  groups: []
+  layerStackPosition: {x: 576, y: 0}
+  finalOutputNode: {fileID: -8260669624335652224}
+  m_isInitialized: 1
+  rootGraph: {fileID: 11400000}
+  snapshotPaths: []
+  _compositorGraphVersion: 1
+  bookmarks: []

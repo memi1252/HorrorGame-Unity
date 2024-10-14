@@ -50,12 +50,14 @@ public class pauseUI : MonoBehaviour
         gameObject.SetActive(true);
         player.Instance.h = 0;
         player.Instance.v =0;
+        player.Instance.ui = true;
         pauseUIpasue = true;
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
+        player.Instance.ui = false;
         pauseUIpasue = false;
     }
 }
