@@ -1,20 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DiaryUI : MonoBehaviour
 {
+    [SerializeField] private Button closeButton;
     public static DiaryUI Instance { get; private set; }
 
-    [SerializeField] private Button closeButton;
-    
-    
+
     private void Awake()
     {
         Instance = this;
-        
+
         closeButton.onClick.AddListener(() =>
         {
             Hide();
@@ -31,8 +27,10 @@ public class DiaryUI : MonoBehaviour
 
     private void Update()
     {
+        soundManager.Instance.walkAudioSource.Stop();
+        soundManager.Instance.runAudioSource.Stop();
         player.Instance.h = 0;
-        player.Instance.v =0;
+        player.Instance.v = 0;
     }
 
     public void Show()
@@ -40,7 +38,7 @@ public class DiaryUI : MonoBehaviour
         player.Instance.ui = true;
         gameObject.SetActive(true);
         player.Instance.h = 0;
-        player.Instance.v =0;
+        player.Instance.v = 0;
         RotateToMouse.Instance.pause = false;
     }
 

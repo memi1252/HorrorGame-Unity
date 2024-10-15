@@ -1,14 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
-using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public static InventoryUI Instance { get; private set; }
-    
     [SerializeField] private GameObject flashObject;
     [SerializeField] private GameObject eraserObject;
     [SerializeField] private GameObject crossObject;
@@ -16,12 +9,13 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject nailObject;
     [SerializeField] private GameObject mirrorObject;
 
-    public bool flash = false;
-    public bool eraser = false;
-    public bool cross = false;
-    public bool baseBall = false;
-    public bool nail = false;
-    public bool mirror = false;
+    public bool flash;
+    public bool eraser;
+    public bool cross;
+    public bool baseBall;
+    public bool nail;
+    public bool mirror;
+    public static InventoryUI Instance { get; private set; }
 
     private void Awake()
     {
@@ -33,6 +27,7 @@ public class InventoryUI : MonoBehaviour
         nailObject.SetActive(false);
         mirrorObject.SetActive(false);
     }
+
     private void Start()
     {
         Hide();
@@ -40,57 +35,35 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
+        soundManager.Instance.walkAudioSource.Stop();
+        soundManager.Instance.runAudioSource.Stop();
         player.Instance.h = 0;
-        player.Instance.v =0;
+        player.Instance.v = 0;
         if (flash)
-        {
             flashObject.SetActive(true);
-        }
         else
-        {
             flashObject.SetActive(false);
-        }
         if (eraser)
-        {
             eraserObject.SetActive(true);
-        }
         else
-        {
             eraserObject.SetActive(false);
-        }
         if (cross)
-        {
             crossObject.SetActive(true);
-        }
         else
-        {
             crossObject.SetActive(false);
-        }
         if (baseBall)
-        {
             baseBallObject.SetActive(true);
-        }
         else
-        {
             baseBallObject.SetActive(false);
-        }
 
         if (nail)
-        {
             nailObject.SetActive(true);
-        }
         else
-        {
             nailObject.SetActive(false);
-        }
         if (mirror)
-        {
             mirrorObject.SetActive(true);
-        }
         else
-        {
             mirrorObject.SetActive(false);
-        }
         RotateToMouse.Instance.pause = false;
     }
 
@@ -99,9 +72,9 @@ public class InventoryUI : MonoBehaviour
         gameObject.SetActive(true);
         player.Instance.h = 0;
         player.Instance.ui = true;
-        player.Instance.v =0;
+        player.Instance.v = 0;
     }
-    
+
     public void Hide()
     {
         player.Instance.ui = false;

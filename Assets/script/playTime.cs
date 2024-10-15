@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class playTime : MonoBehaviour
 {
-    public static playTime Instance { get; private set; }
-    
     public float playTimes;
+    public static playTime Instance { get; private set; }
 
     private void Awake()
     {

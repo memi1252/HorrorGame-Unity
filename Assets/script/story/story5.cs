@@ -1,14 +1,12 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class story5 : MonoBehaviour
 {
-    public static story5 Instance { get; private set; }
-    
     [SerializeField] private TextMeshProUGUI storyText;
+    [SerializeField] private Material skybox;
+    public static story5 Instance { get; private set; }
 
 
     private void Awake()
@@ -18,31 +16,33 @@ public class story5 : MonoBehaviour
 
     public void startt()
     {
-        
         StartCoroutine(sto0());
+        RenderSettings.skybox = skybox;
     }
 
-    IEnumerator sto0()
+    private IEnumerator sto0()
     {
         yield return new WaitForSeconds(1f);
         StoryLineUI.Instance.Show();
         storyText.text = "주인공 : 뭐야 아까 그,,";
         StartCoroutine(sto1());
     }
-    
-    IEnumerator sto1()
+
+    private IEnumerator sto1()
     {
         yield return new WaitForSeconds(1.5f);
         storyText.text = "주인공 : 혹시 일기장에 적힌 괴물!!";
         StartCoroutine(sto2());
     }
-    IEnumerator sto2()
+
+    private IEnumerator sto2()
     {
         yield return new WaitForSeconds(1.5f);
         storyText.text = "주인공 : 또 나오기전에 도망가자!!";
         StartCoroutine(sto3());
     }
-    IEnumerator sto3()
+
+    private IEnumerator sto3()
     {
         yield return new WaitForSeconds(1.5f);
         Hide();

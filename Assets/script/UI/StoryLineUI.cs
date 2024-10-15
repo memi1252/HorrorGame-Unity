@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StoryLineUI : MonoBehaviour
@@ -12,6 +9,7 @@ public class StoryLineUI : MonoBehaviour
         Instance = this;
         Hide();
     }
+
     public void Show()
     {
         gameObject.SetActive(true);

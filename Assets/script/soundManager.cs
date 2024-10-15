@@ -1,24 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class soundManager : MonoBehaviour
 {
+    public static soundManager Instance { get; private set; }
+    
     [SerializeField] private AudioResource bgm;
     [SerializeField] public AudioResource walk;
     [SerializeField] public AudioResource run;
-    
+
     [SerializeField] private GameObject playeraudio;
 
 
-    private AudioSource audioSource;
-    private AudioSource walkAudioSource;
-    private AudioSource runAudioSource;
+    public AudioSource audioSource;
+    public AudioSource runAudioSource;
+    public AudioSource walkAudioSource;
 
     private void Awake()
     {
+        Instance = this;
         audioSource = GetComponent<AudioSource>();
         audioSource.resource = bgm;
         audioSource.Play();
@@ -32,6 +32,7 @@ public class soundManager : MonoBehaviour
     private void Update()
     {
         bgmSound();
+        effectSound();
         if (player.Instance.v != 0 || player.Instance.h != 0)
         {
             if (Input.GetKey(KeyCode.LeftShift))
@@ -51,21 +52,21 @@ public class soundManager : MonoBehaviour
                 }
             }
         }
-        else if(player.Instance.v == 0 && player.Instance.h == 0)
+        else if (player.Instance.v == 0 && player.Instance.h == 0)
         {
-            if (walkAudioSource.isPlaying)
-            {
-                walkAudioSource.Stop();
-            }
-            if (runAudioSource.isPlaying)
-            {
-                runAudioSource.Stop();
-            }
+            if (walkAudioSource.isPlaying) walkAudioSource.Stop();
+            if (runAudioSource.isPlaying) runAudioSource.Stop();
         }
     }
 
     private void bgmSound()
     {
         audioSource.volume = settingUI.Instance.BGMSlider.value;
+    }
+    
+    public void effectSound()
+    {
+        walkAudioSource.volume = settingUI.Instance.EffectSlider.value;
+        runAudioSource.volume = settingUI.Instance.EffectSlider.value;
     }
 }

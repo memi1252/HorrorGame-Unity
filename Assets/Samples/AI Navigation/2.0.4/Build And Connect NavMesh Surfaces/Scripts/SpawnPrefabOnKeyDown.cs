@@ -1,35 +1,28 @@
-using System;
 using UnityEngine;
 
 namespace Unity.AI.Navigation.Samples
 {
     /// <summary>
-    /// Prefab spawner with a key input
+    ///     Prefab spawner with a key input
     /// </summary>
     public class SpawnPrefabOnKeyDown : MonoBehaviour
     {
-        [SerializeField]
-        GameObject prefab;
-        
-        [SerializeField]
-        KeyCode keyCode;
-        
-        [SerializeField]
-        Transform spawnedPrefabsHolder;
+        [SerializeField] private GameObject prefab;
 
-        Transform m_Transform;
+        [SerializeField] private KeyCode keyCode;
 
-        void Start()
+        [SerializeField] private Transform spawnedPrefabsHolder;
+
+        private Transform m_Transform;
+
+        private void Start()
         {
             m_Transform = transform;
 
-            if (spawnedPrefabsHolder == null)
-            {
-                spawnedPrefabsHolder = m_Transform;
-            }
+            if (spawnedPrefabsHolder == null) spawnedPrefabsHolder = m_Transform;
         }
 
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(keyCode) && prefab != null)
                 Instantiate(prefab, m_Transform.position, m_Transform.rotation, spawnedPrefabsHolder);

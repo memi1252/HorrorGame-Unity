@@ -1,18 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class flash : MonoBehaviour
 {
+    [SerializeField] private GameObject light;
+
+
+    public bool pickUpFlash;
     public static flash Instance { get; private set; }
 
-    [SerializeField] private GameObject light;
-    
-    
-    public bool pickUpFlash = false;
-    
     private void Awake()
     {
         Instance = this;
@@ -22,19 +17,12 @@ public class flash : MonoBehaviour
     private void Update()
     {
         if (pauseUI.Instance.pauseUIpasue == false)
-        {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (light.activeSelf == true)
-                {
-                    
+                if (light.activeSelf)
                     light.SetActive(false);
-                }
                 else
-                {
                     light.SetActive(true);
-                }
             }
-        }
     }
 }

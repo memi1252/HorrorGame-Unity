@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxInteract : MonoBehaviour
 {
+    public bool isShow;
     public static BoxInteract Instance { get; private set; }
-    
-    public bool isShow = false;
 
     private void Awake()
     {
@@ -17,9 +13,7 @@ public class BoxInteract : MonoBehaviour
     public void Interact()
     {
         if (!pauseUI.Instance.gameObject.activeSelf)
-        {
             if (!InventoryUI.Instance.gameObject.activeSelf)
-            {
                 if (!settingUI.Instance.gameObject.activeSelf)
                 {
                     if (!boxUI.Instance.gameObject.activeSelf)
@@ -37,12 +31,12 @@ public class BoxInteract : MonoBehaviour
                             story5.Instance.startt();
                             isShow = true;
                         }
+
                         boxUI.Instance.Hide();
+                        player.Instance.ui = false;
                         RotateToMouse.Instance.anglepause = true;
                         RotateToMouse.Instance.pause = true;
                     }
                 }
-            }
-        }
     }
 }

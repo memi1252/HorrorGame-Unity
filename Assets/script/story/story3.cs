@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class story3 : MonoBehaviour
 {
@@ -28,14 +25,13 @@ public class story3 : MonoBehaviour
         }
     }
 
-    IEnumerator monsters()
+    private IEnumerator monsters()
     {
         yield return new WaitForSeconds(0.4f);
         monster.SetActive(false);
-        
     }
-    
-    IEnumerator sto1()
+
+    private IEnumerator sto1()
     {
         yield return new WaitForSeconds(0.8f);
         StoryLineUI.Instance.Show();
@@ -43,28 +39,28 @@ public class story3 : MonoBehaviour
         canvas.gameObject.SetActive(true);
         StartCoroutine(sto2());
     }
-    
-    IEnumerator sto2()
+
+    private IEnumerator sto2()
     {
         yield return new WaitForSeconds(2.5f);
         storyText.text = "주인공 : 뭐지 잘못 봤나,,";
         StartCoroutine(sto3());
     }
-    
-    IEnumerator sto3()
+
+    private IEnumerator sto3()
     {
         yield return new WaitForSeconds(2.5f);
         storyText.text = "주인공 : 무서운데 여기서 빨리 나가야겠다.";
         StartCoroutine(sto4());
     }
-    IEnumerator sto4()
+
+    private IEnumerator sto4()
     {
         yield return new WaitForSeconds(2.5f);
         Hide();
         StoryLineUI.Instance.Hide();
     }
 
-    
 
     private void Hide()
     {

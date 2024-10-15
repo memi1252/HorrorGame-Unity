@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class story4 : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI storyText;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -17,21 +16,23 @@ public class story4 : MonoBehaviour
         }
     }
 
-    IEnumerator sto1()
+    private IEnumerator sto1()
     {
         yield return new WaitForSeconds(1.5f);
         storyText.text = "주인공 : 버려진 오두막인가??";
         StartCoroutine(sto2());
     }
-    IEnumerator sto2()
+
+    private IEnumerator sto2()
     {
         yield return new WaitForSeconds(1.5f);
         storyText.text = "주인공 : 잠시 저기서 쉬었다 가자!";
         StartCoroutine(sto3());
     }
-    IEnumerator sto3()
+
+    private IEnumerator sto3()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.8f);
         Hide();
         StoryLineUI.Instance.Hide();
     }

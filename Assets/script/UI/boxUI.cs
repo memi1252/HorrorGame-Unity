@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class boxUI : MonoBehaviour
 {
-    public static boxUI Instance { get; private set; }
     [SerializeField] private Button crossBoxButton;
     [SerializeField] private Button flashBoxButton;
     [SerializeField] private Button eraserBoxButton;
@@ -15,6 +11,8 @@ public class boxUI : MonoBehaviour
     [SerializeField] public Button flashInventoryBoxButton;
     [SerializeField] public Button eraserInventoryBoxButton;
     [SerializeField] public Button baseBallInventoryBoxButton;
+    public static boxUI Instance { get; private set; }
+
     private void Awake()
     {
         Instance = this;
@@ -67,20 +65,21 @@ public class boxUI : MonoBehaviour
             InventoryUI.Instance.baseBall = false;
         });
         Hide();
+        player.Instance.ui = false;
     }
-    
 
 
     private void Update()
     {
-        player.Instance.h = 0;
-        player.Instance.v =0;
-        if(Input.GetKeyDown(KeyCode.Escape))
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Hide();
             pauseUI.Instance.Hide();
         }
-        if (InventoryUI.Instance.flash) {
+
+        if (InventoryUI.Instance.flash)
+        {
             flashInventoryBoxButton.gameObject.SetActive(true);
             flash.Instance.gameObject.SetActive(true);
         }
@@ -90,25 +89,19 @@ public class boxUI : MonoBehaviour
             flash.Instance.gameObject.SetActive(false);
         }
 
-        if (InventoryUI.Instance.eraser)
-        {
-            eraserInventoryBoxButton.gameObject.SetActive(true);
-        }
-        
-        
+        if (InventoryUI.Instance.eraser) eraserInventoryBoxButton.gameObject.SetActive(true);
     }
 
     public void Show()
     {
         player.Instance.h = 0;
-        player.Instance.v =0;
+        player.Instance.v = 0;
         player.Instance.ui = true;
         gameObject.SetActive(true);
     }
-    
+
     public void Hide()
     {
-        player.Instance.ui = false;
         gameObject.SetActive(false);
     }
 }

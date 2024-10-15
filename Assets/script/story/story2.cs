@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class story2 : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI storyText;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -18,19 +16,21 @@ public class story2 : MonoBehaviour
         }
     }
 
-    IEnumerator sto1()
+    private IEnumerator sto1()
     {
         yield return new WaitForSeconds(2.5f);
         storyText.text = "주인공 : 이상한 소리가 들리는데 기분탓 인가,,";
         StartCoroutine(sto2());
     }
-    IEnumerator sto2()
+
+    private IEnumerator sto2()
     {
         yield return new WaitForSeconds(2.5f);
         storyText.text = "주인공 : 일딴 계속 가보자";
         StartCoroutine(sto3());
     }
-    IEnumerator sto3()
+
+    private IEnumerator sto3()
     {
         yield return new WaitForSeconds(2.5f);
         Hide();

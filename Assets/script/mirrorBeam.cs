@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class mirrorBeam : MonoBehaviour
 {
-    public static mirrorBeam Instance { get; private set; }
-    
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] public GameObject mirror;
     public int reflections;
+    public static mirrorBeam Instance { get; private set; }
 
 
     private void Awake()
@@ -17,28 +14,27 @@ public class mirrorBeam : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         // Ensure the LineRenderer is reset at the start
         lineRenderer.positionCount = 0;
         mirror.gameObject.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        Vector3 currentPosition = transform.position;
-        Vector3 direction = transform.forward;
-        Ray ray = new Ray(currentPosition, direction);
+        var currentPosition = transform.position;
+        var direction = transform.forward;
+        var ray = new Ray(currentPosition, direction);
         RaycastHit hit;
-        int maxReflections = 4; // Set to 4 to stop after hitting the fourth mirror
+        var maxReflections = 4; // Set to 4 to stop after hitting the fourth mirror
         reflections = 0;
 
         // List to store the positions for the LineRenderer
-        List<Vector3> positions = new List<Vector3>();
+        var positions = new List<Vector3>();
         positions.Add(currentPosition);
 
         while (reflections < maxReflections)
-        {
             if (Physics.Raycast(ray, out hit))
             {
                 // Add the hit point to the positions list
@@ -51,7 +47,6 @@ public class mirrorBeam : MonoBehaviour
                     direction = Vector3.Reflect(direction, hit.normal);
                     ray = new Ray(currentPosition, direction);
                     reflections++;
-
                     //Debug.Log("Hit: " + hit.transform.name);
                 }
                 else
@@ -66,7 +61,6 @@ public class mirrorBeam : MonoBehaviour
                 positions.Add(currentPosition + direction * 100);
                 break;
             }
-        }
 
         // Update the LineRenderer with the new positions
         lineRenderer.positionCount = positions.Count;

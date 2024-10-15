@@ -1,15 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class storyinteract : MonoBehaviour
 {
+    public bool interact;
     public static storyinteract Instance { get; private set; }
 
-    public bool interact;
-    
     private void Awake()
     {
         Instance = this;

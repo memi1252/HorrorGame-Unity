@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class CloseChestInteract : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI storyText;
-    
+
     public void Interact()
     {
         StoryLineUI.Instance.Show();
@@ -14,7 +13,7 @@ public class CloseChestInteract : MonoBehaviour
         StartCoroutine(dd());
     }
 
-    IEnumerator dd()
+    private IEnumerator dd()
     {
         yield return new WaitForSeconds(0.6f);
         StoryLineUI.Instance.Hide();

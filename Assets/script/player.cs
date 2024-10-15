@@ -1,47 +1,42 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using Unity.Profiling.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 public class player : MonoBehaviour
 {
-    public static player Instance { get; private set; }
-    
     [SerializeField] private int moveSpeed;
     public GameObject itemPos;
     public bool isFlash;
     public bool isEraser;
-    
-    private RotateToMouse rotateToMouse;
     public Animator playerAnimator;
     public bool move = true;
     public bool die;
-    public bool ui = false;
-    float time = 4f;
+    public bool ui;
     public float h;
     public float v;
     public float mouseX;
     public float mouseY;
-    
 
- 
-    void Awake()
+    private RotateToMouse rotateToMouse;
+    private float time = 4f;
+    public static player Instance { get; private set; }
+
+
+    private void Awake()
     {
         Instance = this;
-        
+
         rotateToMouse = GetComponent<RotateToMouse>();
         playerAnimator = GetComponent<Animator>();
         Time.timeScale = 1;
     }
+
     private void Start()
     {
         settingUI.Instance.BGMSlider.value = PlayerPrefs.GetFloat("BGM");
+        settingUI.Instance.EffectSlider.value = PlayerPrefs.GetFloat("Effect");
     }
-    
+
     private void Update()
     {
         Move();
@@ -51,43 +46,41 @@ public class player : MonoBehaviour
         Inventory();
         ToggleCursorVisibility();
     }
-    
-    void UpdateRotate()
+
+    private void UpdateRotate()
     {
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
         rotateToMouse.CalculateRotation(mouseX, mouseY);
     }
 
-    void Move()
+    private void Move()
     {
         if (move)
         {
             h = Input.GetAxis("Horizontal");
             v = Input.GetAxis("Vertical");
 
-            Vector3 moveDir = new Vector3(h, 0, v);
+            var moveDir = new Vector3(h, 0, v);
 
             transform.Translate(moveDir * moveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            moveSpeed = 8;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            moveSpeed = 3;
-        }
+        if (Input.GetKeyDown(KeyCode.LeftShift)) moveSpeed = 8;
+        if (Input.GetKeyUp(KeyCode.LeftShift)) moveSpeed = 3;
     }
 
-    void Pause(){
+    private void Pause()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf 
-                                                 && !DiaryUI.Instance.gameObject.activeSelf && !DieUI.Instance.gameObject.activeSelf
-                                                 && !OpenChestUI.Instance.gameObject.activeSelf && !settingUI.Instance.gameObject.activeSelf
-                                                 && !boxUI.Instance.gameObject.activeSelf && !offeringUI.Instance.gameObject.activeSelf)
+            if (!storyinteract.Instance.interact && !InventoryUI.Instance.gameObject.activeSelf
+                                                 && !DiaryUI.Instance.gameObject.activeSelf &&
+                                                 !DieUI.Instance.gameObject.activeSelf
+                                                 && !OpenChestUI.Instance.gameObject.activeSelf &&
+                                                 !settingUI.Instance.gameObject.activeSelf
+                                                 && !boxUI.Instance.gameObject.activeSelf &&
+                                                 !offeringUI.Instance.gameObject.activeSelf)
             {
                 if (pauseUI.Instance.gameObject.activeSelf)
                 {
@@ -104,12 +97,15 @@ public class player : MonoBehaviour
                     RotateToMouse.Instance.pause = false;
                 }
             }
-            if (settingUI.Instance.gameObject.activeSelf) {
+
+            if (settingUI.Instance.gameObject.activeSelf)
+            {
                 settingUI.Instance.Hide();
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
                 Time.timeScale = 1;
             }
+
             if (boxUI.Instance.gameObject.activeSelf)
             {
                 if (!BoxInteract.Instance.isShow)
@@ -118,10 +114,12 @@ public class player : MonoBehaviour
                     story5.Instance.startt();
                     BoxInteract.Instance.isShow = true;
                 }
+
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
                 Time.timeScale = 1;
             }
+
             if (StoryUI.Instance.gameObject.activeSelf)
             {
                 StoryUI.Instance.Hide();
@@ -137,6 +135,7 @@ public class player : MonoBehaviour
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
             }
+
             if (DiaryUI.Instance.gameObject.activeSelf)
             {
                 DiaryUI.Instance.Hide();
@@ -148,6 +147,7 @@ public class player : MonoBehaviour
             if (OpenChestUI.Instance.gameObject.activeSelf)
             {
                 OpenChestUI.Instance.Hide();
+                ui = false;
                 move = true;
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
@@ -163,18 +163,19 @@ public class player : MonoBehaviour
         }
     }
 
-    void Die()
+    private void Die()
     {
-        if (die == true)
+        if (die)
         {
+            offeringUI.Instance.Hide();
+            InventoryUI.Instance.Hide();
+            RotateToMouse.Instance.pause = false;
+            RotateToMouse.Instance.anglepause = false;
             time -= Time.deltaTime;
             if (time <= 0)
             {
-                offeringUI.Instance.Hide();
                 DieUI.Instance.Show();
                 pauseUI.Instance.pauseUIpasue = true;
-                RotateToMouse.Instance.pause = false;
-                RotateToMouse.Instance.anglepause = false;
                 move = false;
                 h = 0;
                 v = 0;
@@ -182,7 +183,8 @@ public class player : MonoBehaviour
             }
         }
     }
-    void Inventory()
+
+    private void Inventory()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -195,10 +197,13 @@ public class player : MonoBehaviour
             }
             else
             {
-                if(!pauseUI.Instance.gameObject.activeSelf && !boxUI.Instance.gameObject.activeSelf
-                   && !settingUI.Instance.gameObject.activeSelf && !DiaryUI.Instance.gameObject.activeSelf
-                   && !DieUI.Instance.gameObject.activeSelf && !StoryUI.Instance.gameObject.activeSelf 
-                   && !OpenChestUI.Instance.gameObject.activeSelf) {
+                if (!pauseUI.Instance.gameObject.activeSelf && !boxUI.Instance.gameObject.activeSelf
+                                                            && !settingUI.Instance.gameObject.activeSelf &&
+                                                            !DiaryUI.Instance.gameObject.activeSelf
+                                                            && !DieUI.Instance.gameObject.activeSelf &&
+                                                            !StoryUI.Instance.gameObject.activeSelf
+                                                            && !OpenChestUI.Instance.gameObject.activeSelf)
+                {
                     InventoryUI.Instance.Show();
                     Time.timeScale = 0;
                     RotateToMouse.Instance.anglepause = false;
@@ -207,7 +212,8 @@ public class player : MonoBehaviour
             }
         }
     }
-    void ToggleCursorVisibility()
+
+    private void ToggleCursorVisibility()
     {
         if (!ui)
         {
@@ -221,6 +227,50 @@ public class player : MonoBehaviour
                 RotateToMouse.Instance.pause = true;
                 RotateToMouse.Instance.anglepause = true;
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("eraser"))
+        {
+            offeringUI.Instance.eraser = true;
+            offeringUI.Instance.cross = false;
+            offeringUI.Instance.baseBall = false;
+            offeringUI.Instance.nail = false;
+            offeringUI.Instance.mirror = false;
+        }
+        if (other.CompareTag("cross"))
+        {
+            offeringUI.Instance.eraser = false;
+            offeringUI.Instance.cross = true;
+            offeringUI.Instance.baseBall = false;
+            offeringUI.Instance.nail = false;
+            offeringUI.Instance.mirror = false;
+        }
+        if (other.CompareTag("baseball"))
+        {
+            offeringUI.Instance.eraser = false;
+            offeringUI.Instance.cross = false;
+            offeringUI.Instance.baseBall = true;
+            offeringUI.Instance.nail = false;
+            offeringUI.Instance.mirror = false;
+        }
+        if (other.CompareTag("nail"))
+        {
+            offeringUI.Instance.eraser = false;
+            offeringUI.Instance.cross = false;
+            offeringUI.Instance.baseBall = false;
+            offeringUI.Instance.nail = true;
+            offeringUI.Instance.mirror = false;
+        }
+        if (other.CompareTag("mirror"))
+        {
+            offeringUI.Instance.eraser = false;
+            offeringUI.Instance.cross = false;
+            offeringUI.Instance.baseBall = false;
+            offeringUI.Instance.nail = false;
+            offeringUI.Instance.mirror = true;
         }
     }
 }

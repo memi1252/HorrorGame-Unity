@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
 namespace Unity.AI.Navigation.Samples
 {
@@ -13,17 +13,17 @@ namespace Unity.AI.Navigation.Samples
     }
 
     /// <summary>
-    /// Move an agent when traversing a OffMeshLink given specific animated methods
+    ///     Move an agent when traversing a OffMeshLink given specific animated methods
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class AgentLinkMover : MonoBehaviour
     {
         public OffMeshLinkMoveMethod m_Method = OffMeshLinkMoveMethod.Parabola;
-        public AnimationCurve m_Curve = new AnimationCurve();
+        public AnimationCurve m_Curve = new();
 
-        IEnumerator Start()
+        private IEnumerator Start()
         {
-            NavMeshAgent agent = GetComponent<NavMeshAgent>();
+            var agent = GetComponent<NavMeshAgent>();
             agent.autoTraverseOffMeshLink = false;
             while (true)
             {
@@ -42,10 +42,10 @@ namespace Unity.AI.Navigation.Samples
             }
         }
 
-        IEnumerator NormalSpeed(NavMeshAgent agent)
+        private IEnumerator NormalSpeed(NavMeshAgent agent)
         {
-            OffMeshLinkData data = agent.currentOffMeshLinkData;
-            Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+            var data = agent.currentOffMeshLinkData;
+            var endPos = data.endPos + Vector3.up * agent.baseOffset;
             while (agent.transform.position != endPos)
             {
                 agent.transform.position =
@@ -54,30 +54,30 @@ namespace Unity.AI.Navigation.Samples
             }
         }
 
-        IEnumerator Parabola(NavMeshAgent agent, float height, float duration)
+        private IEnumerator Parabola(NavMeshAgent agent, float height, float duration)
         {
-            OffMeshLinkData data = agent.currentOffMeshLinkData;
-            Vector3 startPos = agent.transform.position;
-            Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
-            float normalizedTime = 0.0f;
+            var data = agent.currentOffMeshLinkData;
+            var startPos = agent.transform.position;
+            var endPos = data.endPos + Vector3.up * agent.baseOffset;
+            var normalizedTime = 0.0f;
             while (normalizedTime < 1.0f)
             {
-                float yOffset = height * 4.0f * (normalizedTime - normalizedTime * normalizedTime);
+                var yOffset = height * 4.0f * (normalizedTime - normalizedTime * normalizedTime);
                 agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
                 normalizedTime += Time.deltaTime / duration;
                 yield return null;
             }
         }
 
-        IEnumerator Curve(NavMeshAgent agent, float duration)
+        private IEnumerator Curve(NavMeshAgent agent, float duration)
         {
-            OffMeshLinkData data = agent.currentOffMeshLinkData;
-            Vector3 startPos = agent.transform.position;
-            Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
-            float normalizedTime = 0.0f;
+            var data = agent.currentOffMeshLinkData;
+            var startPos = agent.transform.position;
+            var endPos = data.endPos + Vector3.up * agent.baseOffset;
+            var normalizedTime = 0.0f;
             while (normalizedTime < 1.0f)
             {
-                float yOffset = m_Curve.Evaluate(normalizedTime);
+                var yOffset = m_Curve.Evaluate(normalizedTime);
                 agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
                 normalizedTime += Time.deltaTime / duration;
                 yield return null;

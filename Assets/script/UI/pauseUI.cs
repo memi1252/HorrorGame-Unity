@@ -1,26 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class pauseUI : MonoBehaviour
 {
-    public static pauseUI Instance { get; private set; }
-
     [SerializeField] private Button exitButton;
     [SerializeField] private Button settingButton;
 
     public bool pauseUIpasue;
+    public static pauseUI Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
-        
+
         exitButton.onClick.AddListener(() =>
         {
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
+            PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
             SceneManager.LoadScene("main");
         });
         settingButton.onClick.AddListener(() =>
@@ -34,22 +31,24 @@ public class pauseUI : MonoBehaviour
         });
     }
 
-    private void Update()
-    {
-        player.Instance.h = 0;
-        player.Instance.v =0;
-    }
-
     private void Start()
     {
         Hide();
+    }
+
+    private void Update()
+    {
+        soundManager.Instance.walkAudioSource.Stop();
+        soundManager.Instance.runAudioSource.Stop();
+        player.Instance.h = 0;
+        player.Instance.v = 0;
     }
 
     public void Show()
     {
         gameObject.SetActive(true);
         player.Instance.h = 0;
-        player.Instance.v =0;
+        player.Instance.v = 0;
         player.Instance.ui = true;
         pauseUIpasue = true;
     }

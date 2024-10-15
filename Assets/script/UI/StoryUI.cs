@@ -1,21 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StoryUI : MonoBehaviour
 {
-    public static StoryUI Instance { get; private set; }
-
     [SerializeField] private Button playButton;
     [SerializeField] private Button clostButton;
+    public static StoryUI Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
-        
+
         playButton.onClick.AddListener(() =>
         {
             Hide();
@@ -32,15 +28,17 @@ public class StoryUI : MonoBehaviour
         });
     }
 
-    private void Update()
-    {
-        player.Instance.h = 0;
-        player.Instance.v =0;
-    }
-
     private void Start()
     {
         Hide();
+    }
+
+    private void Update()
+    {
+        soundManager.Instance.walkAudioSource.Stop();
+        soundManager.Instance.runAudioSource.Stop();
+        player.Instance.h = 0;
+        player.Instance.v = 0;
     }
 
     public void Show()
@@ -48,7 +46,7 @@ public class StoryUI : MonoBehaviour
         gameObject.SetActive(true);
         player.Instance.h = 0;
         player.Instance.ui = true;
-        player.Instance.v =0;
+        player.Instance.v = 0;
         RotateToMouse.Instance.pause = false;
     }
 

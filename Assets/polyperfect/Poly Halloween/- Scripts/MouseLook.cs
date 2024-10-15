@@ -6,19 +6,18 @@ namespace Polyperfect.Universal
     {
         public float mouseSensitivity = 3f;
         public Transform playerBody;
-        float xRotation = 0f;
+        private float xRotation;
 
 
-
-        void Start()
+        private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        void Update()
+        private void Update()
         {
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+            var mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            var mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
@@ -28,4 +27,3 @@ namespace Polyperfect.Universal
         }
     }
 }
-  

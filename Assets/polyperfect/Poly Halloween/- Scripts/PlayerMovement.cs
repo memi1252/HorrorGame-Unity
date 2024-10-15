@@ -4,7 +4,6 @@ namespace Polyperfect.Universal
 {
     public class PlayerMovement : MonoBehaviour
     {
-
         public CharacterController controller;
         public float speed = 12f;
         public float gravity = -9.81f;
@@ -13,13 +12,13 @@ namespace Polyperfect.Universal
         public Transform groundCheck;
         public float groundDistance = 0.4f;
         public LayerMask groundMask;
+        private bool isGrounded;
 
 
-        Vector3 velocity;
-        bool isGrounded;
+        private Vector3 velocity;
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             controller = GetComponent<CharacterController>();
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -31,10 +30,10 @@ namespace Polyperfect.Universal
             }
 
 
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
+            var x = Input.GetAxis("Horizontal");
+            var z = Input.GetAxis("Vertical");
 
-            Vector3 move = transform.right * x + transform.forward * z;
+            var move = transform.right * x + transform.forward * z;
             if (move.magnitude > 1)
                 move /= move.magnitude;
 
@@ -48,14 +47,9 @@ namespace Polyperfect.Universal
             }
 
 
-
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
-
-
-
-
         }
     }
 }

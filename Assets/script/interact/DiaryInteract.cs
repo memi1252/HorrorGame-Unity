@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DiaryInteract : MonoBehaviour
 {
+    public bool interact;
     public static DiaryInteract Instance { get; private set; }
 
-    public bool interact;
-    
     private void Awake()
     {
         Instance = this;

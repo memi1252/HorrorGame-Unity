@@ -1,21 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 public class monster : MonoBehaviour
 {
-    public static monster Instance { get; private set; }
-    
     [SerializeField] private GameObject playerDiePos;
-    
+
     public Transform target;
+    private Animator animator;
+    private bool die;
 
     private NavMeshAgent nmAgent;
-    private Animator animator;
-    private bool die = false;
+    public static monster Instance { get; private set; }
 
     private void Awake()
     {
@@ -29,16 +24,14 @@ public class monster : MonoBehaviour
 
     private void Update()
     {
-        if (die == true)
+        if (die)
         {
-            
         }
         else
         {
-            if(altarIN.Instance.altar)
+            if (altarIN.Instance.altar)
                 nmAgent.SetDestination(target.position);
         }
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,6 +43,9 @@ public class monster : MonoBehaviour
             RotateToMouse.Instance.pause = false;
             playerDiePos.SetActive(true);
             die = true;
+            other.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            RotateToMouse.Instance.eulerAngleX = 0;
+            RotateToMouse.Instance.eulerAngleY = 180;
             player.Instance.die = true;
             Debug.Log("die");
             Destroy(gameObject);

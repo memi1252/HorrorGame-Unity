@@ -6,6 +6,11 @@ TagManager:
   tags:
   - monster
   - Mirror
+  - eraser
+  - cross
+  - baseball
+  - nail
+  - mirror
   layers:
   - Default
   - TransparentFX

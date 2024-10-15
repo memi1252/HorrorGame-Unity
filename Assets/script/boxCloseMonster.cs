@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class boxCloseMonster : MonoBehaviour
 {
     public static boxCloseMonster Instance { get; private set; }
-    
-    
-    
+
+
     private void Awake()
     {
         Instance = this;
@@ -21,7 +18,7 @@ public class boxCloseMonster : MonoBehaviour
         StartCoroutine(d());
     }
 
-    IEnumerator d()
+    private IEnumerator d()
     {
         yield return new WaitForSeconds(0.8f);
         Hide();
