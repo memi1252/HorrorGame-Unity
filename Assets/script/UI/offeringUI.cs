@@ -21,7 +21,13 @@ public class offeringUI : MonoBehaviour
     [SerializeField] Image baseBallXImage;
     [SerializeField] Image nailXImage;
     [SerializeField] Image mirrorXImage;
-
+    
+    public GameObject eraserObject = null;
+    public GameObject crossObject= null;
+    public GameObject baseBallObject= null;
+    public GameObject nailObject= null;
+    public GameObject mirrorObject= null;
+    
     public bool eraser;
     public bool cross;
     public bool baseBall;
@@ -29,6 +35,13 @@ public class offeringUI : MonoBehaviour
     public bool mirror;
 
     public bool full=false;
+    
+    public bool ineraser;
+    public bool incross;
+    public bool inbaseBall;
+    public bool innail;
+    public bool inmirror;
+    
     
     public static offeringUI Instance { get; private set; }
 
@@ -106,7 +119,7 @@ public class offeringUI : MonoBehaviour
         { 
             mirrorInventoryBoxButton.gameObject.SetActive(false);
             mirrorButton.gameObject.SetActive(true);
-            InventoryUI.Instance.mirror = false; 
+            InventoryUI.Instance.mirror = false;
             if (full)
             {
                 mirrorButton.gameObject.SetActive(false);
@@ -127,6 +140,7 @@ public class offeringUI : MonoBehaviour
             crossButton.gameObject.SetActive(false);
             crossInventoryBoxButton.gameObject.SetActive(true);
             InventoryUI.Instance.cross = true;
+            incross = false;
             full = false;
         });
         eraserButton.onClick.AddListener(() =>
@@ -134,6 +148,7 @@ public class offeringUI : MonoBehaviour
             eraserButton.gameObject.SetActive(false);
             eraserInventoryBoxButton.gameObject.SetActive(true);
             InventoryUI.Instance.eraser = true;
+            ineraser = false;
             full = false;
         });
         baseBallButton.onClick.AddListener(() =>
@@ -141,6 +156,7 @@ public class offeringUI : MonoBehaviour
             baseBallButton.gameObject.SetActive(false);
             baseBallInventoryBoxButton.gameObject.SetActive(true);
             InventoryUI.Instance.baseBall = true;
+            inbaseBall = false;
             full = false;
         });
         nailButton.onClick.AddListener(() =>
@@ -148,6 +164,7 @@ public class offeringUI : MonoBehaviour
             nailButton.gameObject.SetActive(false);
             nailInventoryBoxButton.gameObject.SetActive(true);
             InventoryUI.Instance.nail = true;
+            innail = false;
             full = false;
         });
         mirrorButton.onClick.AddListener(() =>
@@ -155,6 +172,7 @@ public class offeringUI : MonoBehaviour
             mirrorButton.gameObject.SetActive(false);
             mirrorInventoryBoxButton.gameObject.SetActive(true);
             InventoryUI.Instance.mirror = true;
+            inmirror = false;
             full = false;
         });
     }
@@ -179,6 +197,7 @@ public class offeringUI : MonoBehaviour
         no();
         soundManager.Instance.walkAudioSource.Stop();
         soundManager.Instance.runAudioSource.Stop();
+        offeringInventory();
     }
 
     private void no()
@@ -254,6 +273,521 @@ public class offeringUI : MonoBehaviour
         }
     }
 
+    private void offeringInventory()
+    {
+        if (player.Instance.alternumber == 1)
+        {
+            if (flashButton.gameObject.activeSelf)
+            {
+                eraserObject = flashButton.gameObject;
+            }else if (eraserButton.gameObject.activeSelf)
+            {
+                eraserObject = eraserButton.gameObject;
+                ineraser = true;
+            }else if (crossButton.gameObject.activeSelf)
+            {
+                eraserObject = crossButton.gameObject;
+            }else if (baseBallButton.gameObject.activeSelf)
+            {
+                eraserObject = baseBallButton.gameObject;
+            }else if (nailButton.gameObject.activeSelf)
+            {
+                eraserObject = nailButton.gameObject;
+            }else if (mirrorButton.gameObject.activeSelf)
+            {
+                mirrorObject  = mirrorButton.gameObject;
+            }else {
+                if (eraserObject != null)
+                {
+                    if (eraserObject == eraserButton.gameObject)
+                    {
+                        eraserButton.gameObject.SetActive(true);
+                        eraserObject = null;
+                        if (InventoryUI.Instance.eraser)
+                        {
+                            eraserButton.gameObject.SetActive(false);
+                            ineraser = false;
+                        }
+                    }
+                    else if (eraserObject == crossButton.gameObject)
+                    {
+                        crossButton.gameObject.SetActive(true);
+                        eraserObject = null;
+                        
+                        if (InventoryUI.Instance.cross)
+                        {
+                            crossButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (eraserObject == baseBallButton.gameObject)
+                    {
+                        baseBallButton.gameObject.SetActive(true);
+                        eraserObject = null;
+                        if (InventoryUI.Instance.baseBall)
+                        {
+                            baseBallButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (eraserObject == nailButton.gameObject)
+                    {
+                        nailButton.gameObject.SetActive(true);
+                        eraserObject = null;
+                        if (InventoryUI.Instance.nail)
+                        {
+                            nailButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (eraserObject == flashButton.gameObject)
+                    {
+                        flashButton.gameObject.SetActive(true);
+                        eraserObject = null;
+                        if (InventoryUI.Instance.flash)
+                        {
+                            flashButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (eraserObject == mirrorButton.gameObject)
+                    {
+                        mirrorButton.gameObject.SetActive(true);
+                        eraserObject = null;
+                        if (InventoryUI.Instance.mirror)
+                        {
+                            mirrorButton.gameObject.SetActive(false);
+                        }
+                    }
+                }
+                else
+                {
+                    eraserObject = null;
+                }
+            }
+            
+            if (gameObject.activeSelf && eraserObject != null) {
+                eraserObject.SetActive(true);
+                if(eraserObject != null)
+                    full = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                eraserButton.gameObject.SetActive(false);
+                crossButton.gameObject.SetActive(false);
+                baseBallButton.gameObject.SetActive(false); 
+                nailButton.gameObject.SetActive(false);
+                mirrorButton.gameObject.SetActive(false);
+                full = false;
+            }
+        }
+        else if (player.Instance.alternumber == 2)
+        {
+            if (flashButton.gameObject.activeSelf)
+            {
+                crossObject = flashButton.gameObject;
+            }else if (eraserButton.gameObject.activeSelf)
+            {
+                crossObject = eraserButton.gameObject;
+            }else if (crossButton.gameObject.activeSelf)
+            {
+                crossObject = crossButton.gameObject;
+                incross = true;
+            }else if (baseBallButton.gameObject.activeSelf)
+            {
+                crossObject = baseBallButton.gameObject;
+            }else if (nailButton.gameObject.activeSelf)
+            {
+                crossObject = nailButton.gameObject;
+            }else if (mirrorButton.gameObject.activeSelf)
+            {
+                mirrorObject  = mirrorButton.gameObject;
+            }else {
+                if (crossObject != null)
+                {
+                    if (crossObject == eraserButton.gameObject)
+                    {
+                        eraserButton.gameObject.SetActive(true);
+                        crossObject = null;
+                        if (InventoryUI.Instance.eraser)
+                        {
+                            eraserButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (crossObject == crossButton.gameObject)
+                    {
+                        crossButton.gameObject.SetActive(true);
+                        crossObject = null;
+                        if (InventoryUI.Instance.cross)
+                        {
+                            crossButton.gameObject.SetActive(false);
+                            incross = false;
+                        }
+                    }
+                    else if (crossObject == baseBallButton.gameObject)
+                    {
+                        baseBallButton.gameObject.SetActive(true);
+                        crossObject = null;
+                        if (InventoryUI.Instance.baseBall)
+                        {
+                            baseBallButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (crossObject == nailButton.gameObject)
+                    {
+                        nailButton.gameObject.SetActive(true);
+                        crossObject = null;
+                        if (InventoryUI.Instance.nail)
+                        {
+                            nailButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (crossObject == flashButton.gameObject)
+                    {
+                        flashButton.gameObject.SetActive(true);
+                        crossObject = null;
+                        if (InventoryUI.Instance.flash)
+                        {
+                            flashButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (crossObject == mirrorButton.gameObject)
+                    {
+                        mirrorButton.gameObject.SetActive(true);
+                        crossObject = null;
+                        if (InventoryUI.Instance.mirror)
+                        {
+                            mirrorButton.gameObject.SetActive(false);
+                        }
+                    }
+                }
+                else
+                {
+                    crossObject = null;
+                }
+            }
+            
+            if (gameObject.activeSelf && crossObject != null) {
+                crossObject.SetActive(true);
+                if(crossObject != null)
+                    full = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                eraserButton.gameObject.SetActive(false);
+                crossButton.gameObject.SetActive(false);
+                baseBallButton.gameObject.SetActive(false); 
+                nailButton.gameObject.SetActive(false);
+                mirrorButton.gameObject.SetActive(false);
+                full = false;
+            }
+        }
+        else if (player.Instance.alternumber == 3)
+        {
+            if (flashButton.gameObject.activeSelf)
+            {
+                baseBallObject = flashButton.gameObject;
+            }else if (eraserButton.gameObject.activeSelf)
+            {
+                baseBallObject = eraserButton.gameObject;
+            }else if (crossButton.gameObject.activeSelf)
+            {
+                baseBallObject = crossButton.gameObject;
+            }else if (baseBallButton.gameObject.activeSelf)
+            {
+                baseBallObject = baseBallButton.gameObject;
+                inbaseBall = true;
+            }else if (nailButton.gameObject.activeSelf)
+            {
+                baseBallObject = nailButton.gameObject;
+            }else if (mirrorButton.gameObject.activeSelf)
+            {
+                mirrorObject  = mirrorButton.gameObject;
+            }else {
+                if (baseBallObject != null)
+                {
+                    if (baseBallObject == eraserButton.gameObject)
+                    {
+                        eraserButton.gameObject.SetActive(true);
+                        baseBallObject = null;
+                        if (InventoryUI.Instance.eraser)
+                        {
+                            eraserButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (baseBallObject == crossButton.gameObject)
+                    {
+                        crossButton.gameObject.SetActive(true);
+                        baseBallObject = null;
+                        if (InventoryUI.Instance.cross)
+                        {
+                            crossButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (baseBallObject == baseBallButton.gameObject)
+                    {
+                        baseBallButton.gameObject.SetActive(true);
+                        baseBallObject = null;
+                        if (InventoryUI.Instance.baseBall)
+                        {
+                            baseBallButton.gameObject.SetActive(false);
+                            inbaseBall = false;
+                        }
+                    }
+                    else if (baseBallObject == nailButton.gameObject)
+                    {
+                        nailButton.gameObject.SetActive(true);
+                        baseBallObject = null;
+                        if (InventoryUI.Instance.nail)
+                        {
+                            nailButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (baseBallObject == flashButton.gameObject)
+                    {
+                        flashButton.gameObject.SetActive(true);
+                        baseBallObject = null;
+                        if (InventoryUI.Instance.flash)
+                        {
+                            flashButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (baseBallObject == mirrorButton.gameObject)
+                    {
+                        mirrorButton.gameObject.SetActive(true);
+                        baseBallObject = null;
+                        if (InventoryUI.Instance.mirror)
+                        {
+                            mirrorButton.gameObject.SetActive(false);
+                        }
+                    }
+                }
+                else
+                {
+                    baseBallObject = null;
+                }
+            }
+            
+            if (gameObject.activeSelf && baseBallObject != null) {
+                baseBallObject.SetActive(true);
+                if(baseBallObject != null)
+                    full = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                eraserButton.gameObject.SetActive(false);
+                crossButton.gameObject.SetActive(false);
+                baseBallButton.gameObject.SetActive(false); 
+                nailButton.gameObject.SetActive(false);
+                mirrorButton.gameObject.SetActive(false);
+                full = false;
+            }
+        }
+        else if (player.Instance.alternumber == 4)
+        {
+            if (flashButton.gameObject.activeSelf)
+            {
+                nailObject = flashButton.gameObject;
+            }else if (eraserButton.gameObject.activeSelf)
+            {
+                nailObject = eraserButton.gameObject;
+            }else if (crossButton.gameObject.activeSelf)
+            {
+                nailObject = crossButton.gameObject;
+            }else if (baseBallButton.gameObject.activeSelf)
+            {
+                nailObject = baseBallButton.gameObject;
+            }else if (nailButton.gameObject.activeSelf)
+            {
+                nailObject = nailButton.gameObject;
+                innail = true;
+            }else if (mirrorButton.gameObject.activeSelf)
+            {
+                mirrorObject  = mirrorButton.gameObject;
+            }else {
+                if (nailObject != null)
+                {
+                    if (nailObject == eraserButton.gameObject)
+                    {
+                        eraserButton.gameObject.SetActive(true);
+                        nailObject = null;
+                        if (InventoryUI.Instance.eraser)
+                        {
+                            eraserButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (nailObject == crossButton.gameObject)
+                    {
+                        crossButton.gameObject.SetActive(true);
+                        nailObject = null;
+                        if (InventoryUI.Instance.cross)
+                        {
+                            crossButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (nailObject == baseBallButton.gameObject)
+                    {
+                        baseBallButton.gameObject.SetActive(true);
+                        nailObject = null;
+                        if (InventoryUI.Instance.baseBall)
+                        {
+                            baseBallButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (nailObject == nailButton.gameObject)
+                    {
+                        nailButton.gameObject.SetActive(true);
+                        nailObject= null;
+                        if (InventoryUI.Instance.nail)
+                        {
+                            nailButton.gameObject.SetActive(false);
+                            innail = false;
+                        }
+                    }
+                    else if (nailObject == flashButton.gameObject)
+                    {
+                        flashButton.gameObject.SetActive(true);
+                        nailObject = null;
+                        if (InventoryUI.Instance.flash)
+                        {
+                            flashButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (nailObject == mirrorButton.gameObject)
+                    {
+                        mirrorButton.gameObject.SetActive(true);
+                        nailObject = null;
+                        if (InventoryUI.Instance.mirror)
+                        {
+                            mirrorButton.gameObject.SetActive(false);
+                        }
+                    }
+                }
+                else
+                {
+                    nailObject = null;
+                }
+            }
+            
+            if (gameObject.activeSelf &&nailObject != null) {
+                nailObject.SetActive(true);
+                if(nailObject != null)
+                    full = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                eraserButton.gameObject.SetActive(false);
+                crossButton.gameObject.SetActive(false);
+                baseBallButton.gameObject.SetActive(false); 
+                nailButton.gameObject.SetActive(false);
+                mirrorButton.gameObject.SetActive(false);
+                full = false;
+            }
+        }
+        else if (player.Instance.alternumber == 5)
+        {
+            if (flashButton.gameObject.activeSelf)
+            {
+                mirrorObject = flashButton.gameObject;
+            }else if (eraserButton.gameObject.activeSelf)
+            {
+                mirrorObject = eraserButton.gameObject;
+            }else if (crossButton.gameObject.activeSelf)
+            {
+                mirrorObject = crossButton.gameObject;
+            }else if (baseBallButton.gameObject.activeSelf)
+            {
+                mirrorObject = baseBallButton.gameObject;
+            }else if (nailButton.gameObject.activeSelf)
+            {
+                mirrorObject = nailButton.gameObject;
+            }else if (mirrorButton.gameObject.activeSelf)
+            {
+                mirrorObject  = mirrorButton.gameObject;
+                inmirror = true;
+            }else {
+                if (mirrorObject != null)
+                {
+                    if (mirrorObject == eraserButton.gameObject)
+                    {
+                        eraserButton.gameObject.SetActive(true);
+                        mirrorObject = null;
+                        if (InventoryUI.Instance.eraser)
+                        {
+                            eraserButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (mirrorObject == crossButton.gameObject)
+                    {
+                        crossButton.gameObject.SetActive(true);
+                        mirrorObject = null;
+                        if (InventoryUI.Instance.cross)
+                        {
+                            crossButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (mirrorObject == baseBallButton.gameObject)
+                    {
+                        baseBallButton.gameObject.SetActive(true);
+                        mirrorObject = null;
+                        if (InventoryUI.Instance.baseBall)
+                        {
+                            baseBallButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (mirrorObject == nailButton.gameObject)
+                    {
+                        nailButton.gameObject.SetActive(true);
+                        mirrorObject= null;
+                        if (InventoryUI.Instance.nail)
+                        {
+                            nailButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (mirrorObject == flashButton.gameObject)
+                    {
+                        flashButton.gameObject.SetActive(true);
+                        mirrorObject = null;
+                        if (InventoryUI.Instance.flash)
+                        {
+                            flashButton.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (mirrorObject == mirrorButton.gameObject)
+                    {
+                        mirrorButton.gameObject.SetActive(true);
+                        mirrorObject = null;
+                        if (InventoryUI.Instance.mirror)
+                        {
+                            mirrorButton.gameObject.SetActive(false);
+                            inmirror = false;
+                        }
+                    }
+                }
+                else
+                {
+                    mirrorObject = null;
+                }
+            }
+            
+            if (gameObject.activeSelf &&mirrorObject != null) {
+                mirrorObject.SetActive(true);
+                if(mirrorObject != null)
+                    full = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                eraserButton.gameObject.SetActive(false);
+                crossButton.gameObject.SetActive(false);
+                baseBallButton.gameObject.SetActive(false); 
+                nailButton.gameObject.SetActive(false);
+                mirrorButton.gameObject.SetActive(false);
+                full = false;
+            }
+        }
+    }
+
     public void Show()
     {
         player.Instance.ui = true;
@@ -262,6 +796,12 @@ public class offeringUI : MonoBehaviour
 
     public void Hide()
     {
+        eraserButton.gameObject.SetActive(false);
+        crossButton.gameObject.SetActive(false);
+        baseBallButton.gameObject.SetActive(false); 
+        nailButton.gameObject.SetActive(false);
+        mirrorButton.gameObject.SetActive(false);
+        full = false;
         gameObject.SetActive(false);
     }
 }

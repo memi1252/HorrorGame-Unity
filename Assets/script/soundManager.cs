@@ -8,13 +8,18 @@ public class soundManager : MonoBehaviour
     [SerializeField] private AudioResource bgm;
     [SerializeField] public AudioResource walk;
     [SerializeField] public AudioResource run;
+    [SerializeField] public AudioResource lightSwith;
+    [SerializeField] public AudioResource boxOpen;
 
     [SerializeField] private GameObject playeraudio;
+    [SerializeField] private GameObject lightaudio;
+    [SerializeField] private GameObject boxaudio;
 
 
     public AudioSource audioSource;
     public AudioSource runAudioSource;
     public AudioSource walkAudioSource;
+    public AudioSource lightSwithAudioSource;
 
     private void Awake()
     {
@@ -27,6 +32,8 @@ public class soundManager : MonoBehaviour
         walkAudioSource.resource = walk;
         runAudioSource = playeraudio.AddComponent<AudioSource>();
         runAudioSource.resource = run;
+        lightSwithAudioSource = lightaudio.AddComponent<AudioSource>();
+        lightSwithAudioSource.resource = lightSwith;
     }
 
     private void Update()
@@ -68,5 +75,6 @@ public class soundManager : MonoBehaviour
     {
         walkAudioSource.volume = settingUI.Instance.EffectSlider.value;
         runAudioSource.volume = settingUI.Instance.EffectSlider.value;
+        lightSwithAudioSource.volume = settingUI.Instance.EffectSlider.value;
     }
 }

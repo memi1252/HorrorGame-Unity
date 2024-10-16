@@ -55,7 +55,6 @@ public class InventoryUI : MonoBehaviour
             baseBallObject.SetActive(true);
         else
             baseBallObject.SetActive(false);
-
         if (nail)
             nailObject.SetActive(true);
         else

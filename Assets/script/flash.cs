@@ -20,9 +20,15 @@ public class flash : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (light.activeSelf)
+                {
+                    soundManager.Instance.lightSwithAudioSource.Play();
                     light.SetActive(false);
+                }
                 else
+                {
+                    soundManager.Instance.lightSwithAudioSource.Play();
                     light.SetActive(true);
+                }
             }
     }
 }

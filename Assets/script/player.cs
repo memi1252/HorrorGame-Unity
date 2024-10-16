@@ -17,8 +17,13 @@ public class player : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
+    public int alternumber;
+    
     private RotateToMouse rotateToMouse;
     private float time = 4f;
+    
+    int monseterDiecount = 0;
+    
     public static player Instance { get; private set; }
 
 
@@ -45,6 +50,7 @@ public class player : MonoBehaviour
         Die();
         Inventory();
         ToggleCursorVisibility();
+        monsterDie();
     }
 
     private void UpdateRotate()
@@ -229,8 +235,9 @@ public class player : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerStay(Collider other)
+    
+    
+    public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("eraser"))
         {
@@ -239,6 +246,7 @@ public class player : MonoBehaviour
             offeringUI.Instance.baseBall = false;
             offeringUI.Instance.nail = false;
             offeringUI.Instance.mirror = false;
+            alternumber = 1;
         }
         if (other.CompareTag("cross"))
         {
@@ -247,6 +255,7 @@ public class player : MonoBehaviour
             offeringUI.Instance.baseBall = false;
             offeringUI.Instance.nail = false;
             offeringUI.Instance.mirror = false;
+            alternumber = 2;
         }
         if (other.CompareTag("baseball"))
         {
@@ -255,6 +264,7 @@ public class player : MonoBehaviour
             offeringUI.Instance.baseBall = true;
             offeringUI.Instance.nail = false;
             offeringUI.Instance.mirror = false;
+            alternumber = 3;
         }
         if (other.CompareTag("nail"))
         {
@@ -263,6 +273,7 @@ public class player : MonoBehaviour
             offeringUI.Instance.baseBall = false;
             offeringUI.Instance.nail = true;
             offeringUI.Instance.mirror = false;
+            alternumber = 4;
         }
         if (other.CompareTag("mirror"))
         {
@@ -271,6 +282,19 @@ public class player : MonoBehaviour
             offeringUI.Instance.baseBall = false;
             offeringUI.Instance.nail = false;
             offeringUI.Instance.mirror = true;
+            alternumber = 5;
+        }
+    }
+
+    private void monsterDie()
+    {
+        if(offeringUI.Instance.ineraser && offeringUI.Instance.incross && offeringUI.Instance.inmirror && offeringUI.Instance.innail && offeringUI.Instance.inbaseBall)
+        {
+            if(monseterDiecount == 0)
+            {
+                Debug.Log("MonsterDie");
+                monseterDiecount++;
+            }
         }
     }
 }
