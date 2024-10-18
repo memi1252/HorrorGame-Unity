@@ -6,6 +6,7 @@ public class altarIN : MonoBehaviour
     [SerializeField] private GameObject monster;
     [SerializeField] private GameObject mirrorbeam;
     [SerializeField] private GameObject monsterlight;
+    [SerializeField] private GameObject light;
     public bool altar;
 
     private Animator animator;
@@ -30,9 +31,10 @@ public class altarIN : MonoBehaviour
             {
                 altar = true;
                 RotateToMouse.Instance.anglepause = true;
-                RenderSettings.fogDensity = 0.07f;
+                
                 monsterlight.SetActive(false);
-                player.Instance.move = true;
+                player.Instance.move = false;
+                light.SetActive(true);
                 time = 99999999999f;
             }
         }
@@ -58,8 +60,9 @@ public class altarIN : MonoBehaviour
             }
 
             RotateToMouse.Instance.anglepause = false;
-            player.Instance.move = false;
-            RenderSettings.fogDensity = 0.03f;
+            light.SetActive(false);
+            player.Instance.move = true;
+            
         }
     }
 

@@ -12,14 +12,17 @@ public class soundManager : MonoBehaviour
     [SerializeField] public AudioResource boxOpen;
 
     [SerializeField] private GameObject playeraudio;
-    [SerializeField] private GameObject lightaudio;
-    [SerializeField] private GameObject boxaudio;
+    [SerializeField] public GameObject lightaudio;
+    [SerializeField] public GameObject box1audio;
+    [SerializeField] public GameObject box2audio;
 
 
     public AudioSource audioSource;
     public AudioSource runAudioSource;
     public AudioSource walkAudioSource;
     public AudioSource lightSwithAudioSource;
+    public AudioSource box1AudioSource;
+    public AudioSource box2AudioSource;
 
     private void Awake()
     {
@@ -32,8 +35,9 @@ public class soundManager : MonoBehaviour
         walkAudioSource.resource = walk;
         runAudioSource = playeraudio.AddComponent<AudioSource>();
         runAudioSource.resource = run;
-        lightSwithAudioSource = lightaudio.AddComponent<AudioSource>();
-        lightSwithAudioSource.resource = lightSwith;
+        box1AudioSource = box1audio.AddComponent<AudioSource>();
+        box1AudioSource.resource = boxOpen;
+        
     }
 
     private void Update()
@@ -42,8 +46,8 @@ public class soundManager : MonoBehaviour
         effectSound();
         if (player.Instance.v != 0 || player.Instance.h != 0)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
+            if (Input.GetKey(KeyCode.LeftShift)) 
+            { 
                 if (!runAudioSource.isPlaying)
                 {
                     runAudioSource.Play();
@@ -53,17 +57,18 @@ public class soundManager : MonoBehaviour
             else
             {
                 if (!walkAudioSource.isPlaying)
-                {
-                    walkAudioSource.Play();
+                { 
+                    walkAudioSource.Play(); 
                     runAudioSource.Stop();
                 }
             }
         }
         else if (player.Instance.v == 0 && player.Instance.h == 0)
-        {
-            if (walkAudioSource.isPlaying) walkAudioSource.Stop();
+        { 
+            if (walkAudioSource.isPlaying) walkAudioSource.Stop(); 
             if (runAudioSource.isPlaying) runAudioSource.Stop();
         }
+        
     }
 
     private void bgmSound()
@@ -73,8 +78,13 @@ public class soundManager : MonoBehaviour
     
     public void effectSound()
     {
-        walkAudioSource.volume = settingUI.Instance.EffectSlider.value;
-        runAudioSource.volume = settingUI.Instance.EffectSlider.value;
-        lightSwithAudioSource.volume = settingUI.Instance.EffectSlider.value;
+        if(walkAudioSource != null)
+            walkAudioSource.volume = settingUI.Instance.EffectSlider.value;
+        if(runAudioSource != null)
+            runAudioSource.volume = settingUI.Instance.EffectSlider.value;
+        if(lightSwithAudioSource != null)
+            lightSwithAudioSource.volume = settingUI.Instance.EffectSlider.value;
+        if(box1AudioSource != null)
+            box1AudioSource.volume = settingUI.Instance.EffectSlider.value;
     }
 }

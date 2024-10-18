@@ -18,6 +18,7 @@ public class storyinteract : MonoBehaviour
             StoryUI.Instance.Hide();
             Time.timeScale = 1;
             RotateToMouse.Instance.anglepause = true;
+            pauseUI.Instance.pauseUIpasue = false;
             interact = false;
         }
         else
@@ -25,6 +26,7 @@ public class storyinteract : MonoBehaviour
             StoryUI.Instance.Show();
             Time.timeScale = 0;
             RotateToMouse.Instance.anglepause = false;
+            pauseUI.Instance.pauseUIpasue = true;
             interact = true;
         }
     }

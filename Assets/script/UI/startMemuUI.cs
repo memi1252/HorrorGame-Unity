@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class startMemuUI : MonoBehaviour
     [SerializeField] private Button exitButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button settingssButton;
-    [SerializeField] private Button exitbutton2;
+    //[SerializeField] private Button exitbutton2;
     public static startMemuUI Instance { get; private set; }
 
     private void Awake()
@@ -27,7 +28,14 @@ public class startMemuUI : MonoBehaviour
             settingUI.Instance.Hide();
             player.Instance.ui = false;
         });
-        exitbutton2.onClick.AddListener(() => { Application.Quit(); });
+        //exitbutton2.onClick.AddListener(() => { Application.Quit(); });
+        
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        PlayerPrefs.SetFloat("BGM", 1f);
+        PlayerPrefs.SetFloat("Effect", 1f);
     }
 
     private void Start()

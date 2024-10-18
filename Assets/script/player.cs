@@ -50,7 +50,6 @@ public class player : MonoBehaviour
         Die();
         Inventory();
         ToggleCursorVisibility();
-        monsterDie();
     }
 
     private void UpdateRotate()
@@ -109,6 +108,7 @@ public class player : MonoBehaviour
                 settingUI.Instance.Hide();
                 RotateToMouse.Instance.anglepause = true;
                 RotateToMouse.Instance.pause = true;
+                pauseUI.Instance.pauseUIpasue = false;
                 Time.timeScale = 1;
             }
 
@@ -286,15 +286,5 @@ public class player : MonoBehaviour
         }
     }
 
-    private void monsterDie()
-    {
-        if(offeringUI.Instance.ineraser && offeringUI.Instance.incross && offeringUI.Instance.inmirror && offeringUI.Instance.innail && offeringUI.Instance.inbaseBall)
-        {
-            if(monseterDiecount == 0)
-            {
-                Debug.Log("MonsterDie");
-                monseterDiecount++;
-            }
-        }
-    }
+    
 }

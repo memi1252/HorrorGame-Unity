@@ -15,6 +15,10 @@ public class flashInteract : MonoBehaviour
     public void Interact()
     {
         var flash1 = Instantiate(itemManager.Instance.item[0], player.Instance.itemPos.transform, false);
+        soundManager.Instance.lightaudio = flash1;
+        soundManager.Instance.lightSwithAudioSource = soundManager.Instance.lightaudio.GetComponent<AudioSource>();
+        soundManager.Instance.lightSwithAudioSource.resource = soundManager.Instance.lightSwith;
+        soundManager.Instance.lightSwithAudioSource.mute =false;
         player.Instance.itemPos.transform.position = flash1.transform.position;
         flash.Instance.pickUpFlash = true;
         Light.gameObject.SetActive(false);

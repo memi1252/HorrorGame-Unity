@@ -21,13 +21,13 @@ public class flash : MonoBehaviour
             {
                 if (light.activeSelf)
                 {
-                    soundManager.Instance.lightSwithAudioSource.Play();
                     light.SetActive(false);
+                    soundManager.Instance.lightSwithAudioSource.Play();
                 }
                 else
                 {
-                    soundManager.Instance.lightSwithAudioSource.Play();
                     light.SetActive(true);
+                    soundManager.Instance.lightSwithAudioSource.Play();
                 }
             }
     }
