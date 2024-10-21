@@ -1,8 +1,20 @@
+using System;
+using Tripolygon.UModelerX.Runtime;
 using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
+    public static LookAtCamera Instance { get; private set; }
+
     [SerializeField] private Mode mode;
+    [SerializeField] public GameObject monster1 = null;
+    [SerializeField] public GameObject monster2 = null;
+    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
 
     private void LateUpdate()
@@ -22,6 +34,9 @@ public class LookAtCamera : MonoBehaviour
             case Mode.CameraForwardInverted:
                 transform.forward = -Camera.main.transform.forward;
                 break;
+            case Mode.LookATMonster:
+                transform.LookAt(monster1.transform);
+                break;
         }
     }
 
@@ -31,6 +46,7 @@ public class LookAtCamera : MonoBehaviour
         LookAt,
         LookAtInverted,
         CameraForward,
-        CameraForwardInverted
+        CameraForwardInverted,
+        LookATMonster
     }
 }

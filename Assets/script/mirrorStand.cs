@@ -10,5 +10,6 @@ public class mirrorStandInteract : MonoBehaviour
     private void RotateBy90Degrees()
     {
         transform.Rotate(0, 90, 0);
+        soundManager.Instance.mirrorAudioSource.Play();
     }
 }

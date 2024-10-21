@@ -15,12 +15,24 @@ public class boxCloseMonster : MonoBehaviour
     public void monstershow()
     {
         Show();
+        player.Instance.gameObject.GetComponent<LookAtCamera>().enabled = true;
+        RotateToMouse.Instance.anglepause = false;
+        RotateToMouse.Instance.pause = false;
+        player.Instance.ui = true;
+        player.Instance.move = false;
         StartCoroutine(d());
     }
 
     private IEnumerator d()
     {
         yield return new WaitForSeconds(0.8f);
+        player.Instance.gameObject.GetComponent<LookAtCamera>().monster1 =
+            player.Instance.gameObject.GetComponent<LookAtCamera>().monster2;
+        player.Instance.gameObject.GetComponent<LookAtCamera>().enabled = false;
+        RotateToMouse.Instance.anglepause = true;
+        RotateToMouse.Instance.pause = true;
+        player.Instance.ui = false;
+        player.Instance.move = true;
         Hide();
     }
 

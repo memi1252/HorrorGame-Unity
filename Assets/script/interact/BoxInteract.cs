@@ -21,8 +21,7 @@ public class BoxInteract : MonoBehaviour
                         boxUI.Instance.Show();
                         RotateToMouse.Instance.anglepause = false;
                         RotateToMouse.Instance.pause = false;
-                        //soundManager.Instance.box1AudioSource.Play();
-                        Debug.Log("Interact with Box");
+                        soundManager.Instance.box1AudioSource.Play();
                     }
                     else
                     {

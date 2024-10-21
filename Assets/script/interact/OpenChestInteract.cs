@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenChestInteract : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI storyText;
+    private bool dd =true;
 
     public void Interact()
     {
@@ -18,12 +18,15 @@ public class OpenChestInteract : MonoBehaviour
                         RotateToMouse.Instance.anglepause = false;
                         RotateToMouse.Instance.pause = false;
                         player.Instance.move = false;
-                        StoryLineUI.Instance.Show();
-                        storyText.text = "시스템 : 상자가 열렸다.";
-                        StartCoroutine(HideMessage());
+                        soundManager.Instance.box1AudioSource.Play();
                     }
                     else
                     {
+                        if (dd)
+                        {
+                            storyNail.Instance.ss();
+                            dd=false;
+                        }
                         OpenChestUI.Instance.Hide();
                         player.Instance.ui = false;
                         RotateToMouse.Instance.anglepause = true;
@@ -31,11 +34,5 @@ public class OpenChestInteract : MonoBehaviour
                         player.Instance.move = true;
                     }
                 }
-    }
-
-    private IEnumerator HideMessage()
-    {
-        yield return new WaitForSeconds(0.2f);
-        StoryLineUI.Instance.Hide();
     }
 }

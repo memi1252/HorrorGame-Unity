@@ -69,6 +69,7 @@ public class mirrorBeam : MonoBehaviour
         if (reflections == 4)
         {
             mirror.SetActive(true);
+            soundManager.Instance.itemDropAudioSource.Play();
             reflections++;
         }
     }

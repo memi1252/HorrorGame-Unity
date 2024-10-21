@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,11 +11,13 @@ public class soundManager : MonoBehaviour
     [SerializeField] public AudioResource run;
     [SerializeField] public AudioResource lightSwith;
     [SerializeField] public AudioResource boxOpen;
+    [SerializeField] public AudioResource mirrorpush;
+    [SerializeField] public AudioResource itemPickUp;
+    [SerializeField] private AudioResource itemDrop;
 
     [SerializeField] private GameObject playeraudio;
     [SerializeField] public GameObject lightaudio;
     [SerializeField] public GameObject box1audio;
-    [SerializeField] public GameObject box2audio;
 
 
     public AudioSource audioSource;
@@ -22,7 +25,10 @@ public class soundManager : MonoBehaviour
     public AudioSource walkAudioSource;
     public AudioSource lightSwithAudioSource;
     public AudioSource box1AudioSource;
-    public AudioSource box2AudioSource;
+    public AudioSource mirrorAudioSource;
+    public AudioSource itemPickUpAudioSource;
+    public AudioSource itemDropAudioSource;
+    
 
     private void Awake()
     {
@@ -37,7 +43,12 @@ public class soundManager : MonoBehaviour
         runAudioSource.resource = run;
         box1AudioSource = box1audio.AddComponent<AudioSource>();
         box1AudioSource.resource = boxOpen;
-        
+        mirrorAudioSource = transform.AddComponent<AudioSource>();
+        mirrorAudioSource.resource = mirrorpush;
+        itemPickUpAudioSource = transform.AddComponent<AudioSource>();
+        itemPickUpAudioSource.resource = itemPickUp;
+        itemDropAudioSource = transform.AddComponent<AudioSource>();
+        itemDropAudioSource.resource = itemDrop;
     }
 
     private void Update()
@@ -85,6 +96,12 @@ public class soundManager : MonoBehaviour
         if(lightSwithAudioSource != null)
             lightSwithAudioSource.volume = settingUI.Instance.EffectSlider.value;
         if(box1AudioSource != null)
-            box1AudioSource.volume = settingUI.Instance.EffectSlider.value;
+            box1AudioSource.volume = settingUI.Instance.EffectSlider.value + 0.5f;
+        if(mirrorAudioSource != null)
+            mirrorAudioSource.volume = settingUI.Instance.EffectSlider.value -0.15f;
+        if(itemPickUpAudioSource != null)
+            itemPickUpAudioSource.volume = settingUI.Instance.EffectSlider.value + 0.5f;
+        if(itemDropAudioSource != null)
+            itemDropAudioSource.volume = settingUI.Instance.EffectSlider.value + 0.5f;
     }
 }

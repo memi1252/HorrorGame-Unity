@@ -22,6 +22,7 @@ public class playerInteract : MonoBehaviour
                     if (collider.TryGetComponent(out eraserinteract eraserinteract))
                     {
                         eraserinteract.Interact();
+                        soundManager.Instance.itemPickUpAudioSource.Play();
                         Destroy(eraserinteract.gameObject);
                     }
 
@@ -36,13 +37,18 @@ public class playerInteract : MonoBehaviour
                     if (collider.TryGetComponent(out mirrorInteract mirrorInteract))
                     {
                         mirrorInteract.Interact();
+                        soundManager.Instance.itemPickUpAudioSource.Play();
                         mirrorBeam.Instance.mirror = new GameObject();
                         Destroy(mirrorInteract.gameObject);
                     }
-
                     if (collider.TryGetComponent(out offeringInteract OfferingInteract))
                     {
                         OfferingInteract.Interact();
+                    }
+
+                    if (collider.TryGetComponent(out carInteract carInteract))
+                    {
+                        carInteract.Interact();
                     }
                 }
             }
