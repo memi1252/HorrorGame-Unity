@@ -17,6 +17,7 @@ public class carmove : MonoBehaviour
     {
         if (iscar)
         {
+            gameObject.GetComponent<Animator>().enabled = false;
             transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
     }

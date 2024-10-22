@@ -20788,7 +20788,7 @@ MonoBehaviour:
   - Packages/com.tripolygon.umodeler-x/Editor/Resources/Materials/UModelerX_Gray.mat
   currentMaterialIndex: 0
   renderableMesh:
-    name: UM_OperatedMesh_4a3c8a0d-41da-476c-8f82-2a3684ce7c49
+    name: UM_OperatedMesh_44ea4f2c-d8ad-4f94-9cf4-360461a43c9f
     skinnedMesh: 0
     sharedMesh: {fileID: 4300000, guid: 394fc8ef6abaa844ab614dec2af75e9f, type: 2}
     buidVersion:
@@ -20800,7 +20800,7 @@ MonoBehaviour:
       IndexVersion: 0
       OptimizedTopology: 0
   sourceMesh: {fileID: 0}
-  sourceMeshRendererGUID: 4a3c8a0d-41da-476c-8f82-2a3684ce7c49
+  sourceMeshRendererGUID: 44ea4f2c-d8ad-4f94-9cf4-360461a43c9f
   guid: 8f087e7c-11bc-4d79-bb26-2527e79d40a7
   localOptions:
     RecalculateTangents: 0
@@ -35045,7 +35045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iscar: 0
-  speed: 5
+  speed: 10
 --- !u!54 &1605706991
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38423,7 +38423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 82295047676915042, guid: f5be2f3f763354440980c5ed35c23bb3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 148004112313101039, guid: f5be2f3f763354440980c5ed35c23bb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41491,7 +41491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 82295047676915042, guid: f5be2f3f763354440980c5ed35c23bb3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 148004112313101039, guid: f5be2f3f763354440980c5ed35c23bb3, type: 3}
       propertyPath: m_LocalPosition.x
