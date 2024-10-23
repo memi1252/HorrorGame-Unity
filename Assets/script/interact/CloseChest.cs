@@ -9,7 +9,7 @@ public class CloseChestInteract : MonoBehaviour
     public void Interact()
     {
         StoryLineUI.Instance.Show();
-        storyText.text = "시스템 : 상자가 닫혀있다.";
+        storyText.text = "시스템 : 상자가 비어있다.";
         StartCoroutine(dd());
     }
 

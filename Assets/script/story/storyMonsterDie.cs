@@ -7,6 +7,7 @@ public class storyMonsterDie : MonoBehaviour
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private GameObject car;
     [SerializeField] private GameObject DirLight;
+    [SerializeField] private Material sunSkyBox;
     
     public static storyMonsterDie Instance { get; private set; }
 
@@ -54,6 +55,7 @@ public class storyMonsterDie : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         storyText.text = "주인공 : 드디어 나갈수 있는건가?";
+        RenderSettings.skybox = sunSkyBox;
         DirLight.transform.Rotate(15, 0, 0);
         car.SetActive(true);
         StartCoroutine(sto5());
@@ -69,25 +71,32 @@ public class storyMonsterDie : MonoBehaviour
     private IEnumerator sto6()
     {
         yield return new WaitForSeconds(2f);
-        storyText.text = "주인공 : 아 미안 길을 잊어버려서 ㅎㅎ";
+        storyText.text = "주인공 : 엉엉 애들아 나 무서웠어";
         StartCoroutine(sto7());
     }
     
     private IEnumerator sto7()
     {
         yield return new WaitForSeconds(2f);
-        storyText.text = "주인공 : 나 너무추운데 일단 집으로 갈까?";
+        storyText.text = "주인공 : 아니 무슨일이 있었냐면 (생략)";
         StartCoroutine(sto8());
     }
     
     private IEnumerator sto8()
     {
         yield return new WaitForSeconds(2f);
-        storyText.text = "친구들 : 그래 빨리 가자";
+        storyText.text = "친구들 : 먼 소리야 이상한 소리 말고 돌아가자";
         StartCoroutine(sto9());
     }
-
+    
     private IEnumerator sto9()
+    {
+        yield return new WaitForSeconds(2f);
+        storyText.text = "주인공 : 아니 내 말좀 들어줘,,,";
+        StartCoroutine(sto10());
+    }
+
+    private IEnumerator sto10()
     {
         yield return new WaitForSeconds(2f);
         Hide();

@@ -84,7 +84,7 @@ public class monster : MonoBehaviour
     
     private IEnumerator animatorOut()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.01f);
         animator.SetBool("monserAlterDIe", false);
     }
 
