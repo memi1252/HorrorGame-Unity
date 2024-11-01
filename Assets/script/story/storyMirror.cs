@@ -23,28 +23,28 @@ public class storyMirror : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         StoryLineUI.Instance.Show();
-        storyText.text = "주인공 : 거울,";
+        storyText.text ="주인공 : 거울이네.";
         StartCoroutine(sto2());
     }
 
     private IEnumerator sto2()
     {
         yield return new WaitForSeconds(1.3f);
-        storyText.text = "주인공 : 나 좀 잘생겼는데 ㅎㅎ";
+        storyText.text = "주인공 : 나 좀 잘생겼는데 ㅎㅎ.";
         StartCoroutine(sto3());
     }
     
     private IEnumerator sto3()
     {
         yield return new WaitForSeconds(1.3f);
-        storyText.text = "주인공 : 아 이렇떄가 아니지";
+        storyText.text = "주인공 : 아 이렇 때가 아니지.";
         StartCoroutine(sto4());
     }
     
     private IEnumerator sto4()
     {
         yield return new WaitForSeconds(1.3f);
-        storyText.text = "주인공 : 빨리 제단으로가자";
+        storyText.text = "주인공 : 빨리 제단으로 가자.";
         StartCoroutine(sto5());
     }
     

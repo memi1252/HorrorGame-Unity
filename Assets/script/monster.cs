@@ -119,7 +119,7 @@ public class monster : MonoBehaviour
 
     private IEnumerator sdsd()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(4.5f);
         player.Instance.gameObject.GetComponent<LookAtCamera>().enabled = false;
         RotateToMouse.Instance.anglepause = true;
         RotateToMouse.Instance.pause = true;

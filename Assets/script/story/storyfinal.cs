@@ -8,7 +8,6 @@ public class storyfinal : MonoBehaviour
     {
         if (other.gameObject.tag == "car")
         {
-            StoryLineUI.Instance.Show();
             blackUI.Instance.Show();
             soundManager.Instance.audioSource.Stop();
             soundManager.Instance.walkAudioSource.Stop();
@@ -16,6 +15,7 @@ public class storyfinal : MonoBehaviour
             StartCoroutine(finalSecen());
         }
     }
+    
 
     IEnumerator finalSecen()
     {

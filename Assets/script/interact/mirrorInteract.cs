@@ -3,6 +3,7 @@ using UnityEngine;
 public class mirrorInteract : MonoBehaviour
 {
     public static mirrorInteract Instance { get; private set; }
+    private bool ss = false;
 
     private void Awake()
     {

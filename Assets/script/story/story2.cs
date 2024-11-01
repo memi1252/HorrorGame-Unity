@@ -19,14 +19,14 @@ public class story2 : MonoBehaviour
     private IEnumerator sto1()
     {
         yield return new WaitForSeconds(2.5f);
-        storyText.text = "주인공 : 이상한 소리가 들리는데 기분탓 인가,,";
+        storyText.text = "주인공 : 이상한 소리가 들리는데 기분 탓 인가,,";
         StartCoroutine(sto2());
     }
 
     private IEnumerator sto2()
     {
         yield return new WaitForSeconds(2.5f);
-        storyText.text = "주인공 : 일단 계속 가보자";
+        storyText.text = "주인공 : 일단 계속 가보자.";
         StartCoroutine(sto3());
     }
 

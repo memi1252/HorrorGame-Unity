@@ -5,6 +5,8 @@ public class DiaryUI : MonoBehaviour
 {
     [SerializeField] private Button closeButton;
     public static DiaryUI Instance { get; private set; }
+    
+    public bool isdiary = false;
 
 
     private void Awake()
@@ -40,6 +42,7 @@ public class DiaryUI : MonoBehaviour
         player.Instance.h = 0;
         player.Instance.v = 0;
         RotateToMouse.Instance.pause = false;
+        isdiary = true;
     }
 
 

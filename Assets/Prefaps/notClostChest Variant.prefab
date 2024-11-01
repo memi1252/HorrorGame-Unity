@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5402500122966451834}
   - component: {fileID: 3578794819159943196}
+  - component: {fileID: 5652608983743516523}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -43,8 +44,8 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.03
-  m_Range: 9.01
+  m_Intensity: 0
+  m_Range: 8.64
   m_SpotAngle: 59.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -85,7 +86,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -97,6 +98,29 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &5652608983743516523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544716321779507734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &515557409053329880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,15 +155,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6550020206264288347, guid: f3f82f1de5f318247afa0a9931d597bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.71
+      value: 11.75
       objectReference: {fileID: 0}
     - target: {fileID: 6550020206264288347, guid: f3f82f1de5f318247afa0a9931d597bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.69
+      value: -2.14
       objectReference: {fileID: 0}
     - target: {fileID: 6550020206264288347, guid: f3f82f1de5f318247afa0a9931d597bb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.13
+      value: 4.15
       objectReference: {fileID: 0}
     - target: {fileID: 6550020206264288347, guid: f3f82f1de5f318247afa0a9931d597bb, type: 3}
       propertyPath: m_LocalRotation.w

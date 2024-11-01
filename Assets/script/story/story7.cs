@@ -26,7 +26,7 @@ public class story7 : MonoBehaviour
     private IEnumerator sto1()
     {
         yield return new WaitForSeconds(1.5f);
-        storyText.text = "주인공 : 이 빛을 모든 거울에 비추면 무언가 일어날것 같은데.";
+        storyText.text = "주인공 : 이 빛을 모든 거울에 비추면 무언가 일어날 것 같은데.";
         StartCoroutine(sto2());
     }
 

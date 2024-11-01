@@ -26,7 +26,7 @@ public class story6 : MonoBehaviour
     private IEnumerator sto1()
     {
         yield return new WaitForSeconds(1.5f);
-        storyText.text = "주인공 : 상자 안에 제물이 있을지 모르니 일단 열어보자";
+        storyText.text = "주인공 : 상자 안에 제물이 있을지 모르니 일단 열어보자.";
         StartCoroutine(sto2());
     }
 

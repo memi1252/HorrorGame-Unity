@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class mirrorBeam : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] public GameObject mirror;
+    [SerializeField] public GameObject alter;
     public int reflections;
+    //private bool ss = false;
     public static mirrorBeam Instance { get; private set; }
 
 
@@ -69,7 +72,8 @@ public class mirrorBeam : MonoBehaviour
         if (reflections == 4)
         {
             mirror.SetActive(true);
-            soundManager.Instance.itemDropAudioSource.Play();
+            //soundManager.Instance.itemDropAudioSource.Play();
+            alter.gameObject.SetActive(true);
             reflections++;
         }
     }

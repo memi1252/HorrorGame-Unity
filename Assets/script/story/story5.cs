@@ -38,7 +38,7 @@ public class story5 : MonoBehaviour
     private IEnumerator sto2()
     {
         yield return new WaitForSeconds(1.5f);
-        storyText.text = "주인공 : 또 나오기전에 도망가자!!";
+        storyText.text = "주인공 : 또 나오기 전에 도망가자!!";
         StartCoroutine(sto3());
     }
 

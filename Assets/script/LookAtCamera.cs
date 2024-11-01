@@ -9,6 +9,7 @@ public class LookAtCamera : MonoBehaviour
     [SerializeField] private Mode mode;
     [SerializeField] public GameObject monster1 = null;
     [SerializeField] public GameObject monster2 = null;
+    [SerializeField] public GameObject frend = null;
     
 
     private void Awake()

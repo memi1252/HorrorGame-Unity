@@ -17,6 +17,8 @@ public class StoryUI : MonoBehaviour
             Hide();
             Time.timeScale = 1;
             RotateToMouse.Instance.anglepause = true;
+            PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
+            PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
             //flash.Instance.pickUpFlash = false;
             SceneManager.LoadScene("Map");
         });

@@ -22,21 +22,21 @@ public class storyEraser : MonoBehaviour
     {
         yield return new WaitForSeconds(0f);
         StoryLineUI.Instance.Show();
-        storyText.text = "시스템 : 지우게를 획득했다!";
+        storyText.text = "시스템 : 지우개를 획득했다!";
         StartCoroutine(sto2());
     }
 
     private IEnumerator sto2()
     {
         yield return new WaitForSeconds(1f);
-        storyText.text = "주인공 : ??....뭐지 이 지우게는?";
+        storyText.text = "주인공 : ??.... 뭐지 이 지우개는?";
         StartCoroutine(sto3());
     }
 
     private IEnumerator sto3()
     {
         yield return new WaitForSeconds(1f);
-        storyText.text = "주인공 : 일단 챙겨 놓자";
+        storyText.text = "주인공 : 일단 챙겨 놓자.";
         StartCoroutine(sto4());
     }
 

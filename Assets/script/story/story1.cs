@@ -11,7 +11,7 @@ public class story1 : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             StoryLineUI.Instance.Show();
-            storyText.text = "주인공 : 애들아 어디야,, 무서워";
+            storyText.text = "주인공 : 애들아 어디야,, 무서워.";
             StartCoroutine(sto1());
         }
     }
@@ -26,7 +26,7 @@ public class story1 : MonoBehaviour
     private IEnumerator sto2()
     {
         yield return new WaitForSeconds(2.5f);
-        storyText.text = "주인공 : 길 따라가다보면 만날수있겠지,,,";
+        storyText.text = "주인공 : 길 따라가다 보면 만날 수 있겠지,,,";
         StartCoroutine(sto3());
     }
 

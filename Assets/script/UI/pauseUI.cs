@@ -16,9 +16,20 @@ public class pauseUI : MonoBehaviour
 
         exitButton.onClick.AddListener(() =>
         {
-            PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
-            PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
-            SceneManager.LoadScene("main");
+            if (!storysign.Instance.esteregg)
+            {
+                PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
+                PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
+                SceneManager.LoadScene("main");
+            }
+            else
+            {
+                Time.timeScale = 0;
+                EstereggUI.Instance.Show();
+                soundManager.Instance.audioSource.Stop();
+                soundManager.Instance.walkAudioSource.Stop();
+                soundManager.Instance.runAudioSource.Stop();
+            }
         });
         settingButton.onClick.AddListener(() =>
         {

@@ -11,6 +11,8 @@ public class DieUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemIndexText;
     public static DieUI Instance { get; private set; }
 
+    private int number;
+    
     private void Awake()
     {
         Instance = this;
@@ -40,6 +42,7 @@ public class DieUI : MonoBehaviour
         soundManager.Instance.runAudioSource.Stop();
         SurvivalTImeText.text =
             $"생존 시간 :{(int)playTime.Instance.playTimes / 60}:{(int)playTime.Instance.playTimes % 60}";
+        itemIndexText.text = $"획득한 아이템 수 : {number}";
         player.Instance.h = 0;
         player.Instance.v = 0;
     }
@@ -51,6 +54,18 @@ public class DieUI : MonoBehaviour
         player.Instance.v = 0;
         player.Instance.ui = true;
         pauseUI.Instance.pauseUIpasue = false;
+        if (InventoryUI.Instance.flash)
+            number++;
+        if (InventoryUI.Instance.cross)
+            number++;
+        if (InventoryUI.Instance.eraser)
+            number++;
+        if (InventoryUI.Instance.baseBall)
+            number++;
+        if (InventoryUI.Instance.nail)
+            number++;
+        if (InventoryUI.Instance.mirror)
+            number++;
     }
 
     public void Hide()

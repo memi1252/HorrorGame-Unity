@@ -34,8 +34,8 @@ public class startMemuUI : MonoBehaviour
 
     private void OnApplicationFocus(bool hasFocus)
     {
-        PlayerPrefs.SetFloat("BGM", 1f);
-        PlayerPrefs.SetFloat("Effect", 1f);
+        PlayerPrefs.SetFloat("BGM", 0.5f);
+        PlayerPrefs.SetFloat("Effect", 0.5f);
     }
 
     private void Start()

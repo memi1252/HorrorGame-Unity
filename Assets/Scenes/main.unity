@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -12466,6 +12467,10 @@ PrefabInstance:
       propertyPath: move
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1313702450881144488, guid: f5be2f3f763354440980c5ed35c23bb3, type: 3}
+      propertyPath: mirrorgimic
+      value: 
+      objectReference: {fileID: 1707832278}
     - target: {fileID: 8969795866063299244, guid: f5be2f3f763354440980c5ed35c23bb3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -13896,16 +13901,20 @@ MonoBehaviour:
   run: {fileID: 8300000, guid: eb51b7facdf084846ac93b00e83c5cb5, type: 3}
   lightSwith: {fileID: 8300000, guid: 4821b4c33d8544b4fa0bdd4c5a19488d, type: 3}
   boxOpen: {fileID: 8300000, guid: c6f206e51b38f5f47a9385defad6f88a, type: 3}
+  mirrorpush: {fileID: 0}
+  itemPickUp: {fileID: 0}
+  itemDrop: {fileID: 0}
   playeraudio: {fileID: 1007587734}
   lightaudio: {fileID: 0}
   box1audio: {fileID: 131354281}
-  box2audio: {fileID: 131354281}
   audioSource: {fileID: 0}
   runAudioSource: {fileID: 0}
   walkAudioSource: {fileID: 0}
   lightSwithAudioSource: {fileID: 0}
   box1AudioSource: {fileID: 0}
-  box2AudioSource: {fileID: 0}
+  mirrorAudioSource: {fileID: 0}
+  itemPickUpAudioSource: {fileID: 0}
+  itemDropAudioSource: {fileID: 0}
 --- !u!4 &1575994416
 Transform:
   m_ObjectHideFlags: 0
@@ -14919,6 +14928,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689448581}
   m_CullTransparentMesh: 1
+--- !u!1 &1707832278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707832279}
+  m_Layer: 0
+  m_Name: mirrornull
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1707832279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707832278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.418168, y: 22.662155, z: 12.752651}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709579089
 GameObject:
   m_ObjectHideFlags: 0
@@ -19520,3 +19560,4 @@ SceneRoots:
   - {fileID: 1970476537}
   - {fileID: 1575994416}
   - {fileID: 131354282}
+  - {fileID: 1707832279}

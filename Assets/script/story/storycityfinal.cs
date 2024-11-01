@@ -10,7 +10,6 @@ public class storycityfinal : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private GameObject camerasss;
-    //[SerializeField] private GameObject finalUI;
     
     private void Awake()
     {
@@ -18,6 +17,11 @@ public class storycityfinal : MonoBehaviour
         StartCoroutine(ss());
         StartCoroutine(sto0());
         StartCoroutine(final());
+    }
+
+    private void Start()
+    {
+        RotateToMouse.Instance.pause = true;
     }
 
     IEnumerator ss()
@@ -36,7 +40,7 @@ public class storycityfinal : MonoBehaviour
     private IEnumerator sto1()
     {
         yield return new WaitForSeconds(4f);
-        storyText.text = "주인공 : 꿈이였나?";
+        storyText.text = "주인공 : 꿈이었나?";
         StartCoroutine(sto2());
     }
     
@@ -62,8 +66,14 @@ public class storycityfinal : MonoBehaviour
         StartCoroutine(sto5());
     }
     
-    
     private IEnumerator sto5()
+    {
+        yield return new WaitForSeconds(2f);
+        storyText.text = "주인공 : 아 오늘은 뭘 먹을까?.";
+        StartCoroutine(sto6());
+    }
+    
+    private IEnumerator sto6()
     {
         yield return new WaitForSeconds(1.5f);
         StoryLineUI.Instance.Hide();

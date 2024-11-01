@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class altarIN : MonoBehaviour
@@ -29,10 +30,10 @@ public class altarIN : MonoBehaviour
             if (time < 0)
             {
                 altar = true;
-                RotateToMouse.Instance.anglepause = true;
                 Destroy(monsterlight);
-                player.Instance.move = true;
-                RenderSettings.fogDensity = 0.03f;
+                AlterTutorialUI.Instance.Show();
+                Time.timeScale = 0;
+                monsterlight.SetActive(false);
                 time = 99999999999f;
             }
         }
@@ -50,6 +51,7 @@ public class altarIN : MonoBehaviour
                 RotateToMouse.Instance.eulerAngleY = 180;
                 player.Instance.playerAnimator.SetBool("in", true);
                 StartCoroutine(ss());
+                StartCoroutine(light());
                 monster.SetActive(true);
                 mirrorbeam.SetActive(false);
                 player.Instance.h = 0;
@@ -62,6 +64,12 @@ public class altarIN : MonoBehaviour
         }
     }
 
+    IEnumerator light()
+    {
+        yield return new WaitForSeconds(10f);
+        monsterlight.SetActive(true);
+    }
+    
     private IEnumerator ss()
     {
         yield return new WaitForSeconds(0.1f);

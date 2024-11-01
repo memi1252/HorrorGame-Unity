@@ -59,6 +59,7 @@ public class finalUI : MonoBehaviour
         yield return new WaitForSeconds(2f);
         text2.SetActive(false);
         text3.SetActive(true);
+        RotateToMouse.Instance.pause = false;
         button1.gameObject.SetActive(true);
         button2.gameObject.SetActive(true);
     }

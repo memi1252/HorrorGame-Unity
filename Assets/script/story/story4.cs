@@ -11,7 +11,7 @@ public class story4 : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             StoryLineUI.Instance.Show();
-            storyText.text = "주인공 : 어 저기 오두막이있다!!";
+            storyText.text = "주인공 : 어 저기 오두막이 있다!!";
             StartCoroutine(sto1());
         }
     }

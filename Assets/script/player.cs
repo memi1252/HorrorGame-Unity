@@ -5,6 +5,7 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     [SerializeField] private int moveSpeed;
+    [SerializeField] private GameObject mirrorgimic;
     public GameObject itemPos;
     public bool isFlash;
     public bool isEraser;
@@ -12,6 +13,7 @@ public class player : MonoBehaviour
     public bool move = true;
     public bool die;
     public bool ui;
+    private bool mirroronemore = false;
     public float h;
     public float v;
     public float mouseX;
@@ -50,6 +52,17 @@ public class player : MonoBehaviour
         Die();
         Inventory();
         ToggleCursorVisibility();
+        if (mirrorgimic.activeSelf)
+        {
+            if (mirrorInteract.Instance.gameObject.activeSelf)
+            {
+                if (!mirroronemore)
+                {
+                    soundManager.Instance.itemDropAudioSource.Play();
+                    mirroronemore = true;
+                }
+            }
+        }
     }
 
     private void UpdateRotate()
@@ -285,6 +298,4 @@ public class player : MonoBehaviour
             alternumber = 5;
         }
     }
-
-    
 }
