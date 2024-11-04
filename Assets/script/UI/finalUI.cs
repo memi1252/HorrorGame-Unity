@@ -20,11 +20,11 @@ public class finalUI : MonoBehaviour
         Hide();
         button1.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Mainlobby");
+            LoadingBar.LoadScene("Mainlobby");
         });
         button2.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("main");
+            LoadingBar.LoadScene("main");
         });
     }
 

@@ -20,7 +20,7 @@ public class pauseUI : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
                 PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
-                SceneManager.LoadScene("main");
+                LoadingBar.LoadScene("main");
             }
             else
             {

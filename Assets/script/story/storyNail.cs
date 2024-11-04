@@ -19,13 +19,18 @@ public class storyNail : MonoBehaviour
     {
         StartCoroutine(sto1());
     }
+
+    public void miirorON()
+    {
+        mirror.gameObject.SetActive(true);
+    }
     
     private IEnumerator sto1()
     {
         yield return new WaitForSeconds(0.1f);
         StoryLineUI.Instance.Show();
         storyText.text = "주인공 : 이 못도 제물이겠지?";
-        mirror.gameObject.SetActive(true);
+        miirorON();
         StartCoroutine(sto2());
     }
 

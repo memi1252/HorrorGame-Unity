@@ -49,9 +49,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5576427845121688833, guid: fc9c16ae2c6ebb64290564e8aea4f879, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5576427845121688833, guid: fc9c16ae2c6ebb64290564e8aea4f879, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f6072487b152cf645bb6394d6e54c1a2, type: 2}
+    - target: {fileID: -5576427845121688833, guid: fc9c16ae2c6ebb64290564e8aea4f879, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0019b29a796a7254db245048eecd38ef, type: 2}
     - target: {fileID: -3712215081894405538, guid: fc9c16ae2c6ebb64290564e8aea4f879, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9829518

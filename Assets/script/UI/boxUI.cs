@@ -97,6 +97,7 @@ public class boxUI : MonoBehaviour
         player.Instance.h = 0;
         player.Instance.v = 0;
         player.Instance.ui = true;
+        StoryLineUI.Instance.Hide();
         gameObject.SetActive(true);
     }
 

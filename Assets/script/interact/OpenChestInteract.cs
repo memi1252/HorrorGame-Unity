@@ -1,10 +1,18 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class OpenChestInteract : MonoBehaviour
 {
-    private bool dd =true;
+    public static OpenChestInteract Instance { get; private set; }
+    
+    public bool dd =true;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Interact()
     {

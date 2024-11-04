@@ -5,7 +5,7 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     [SerializeField] private int moveSpeed;
-    [SerializeField] private GameObject mirrorgimic;
+    [SerializeField] public GameObject mirrorgimic;
     public GameObject itemPos;
     public bool isFlash;
     public bool isEraser;
@@ -52,14 +52,17 @@ public class player : MonoBehaviour
         Die();
         Inventory();
         ToggleCursorVisibility();
-        if (mirrorgimic.activeSelf)
+        if (mirrorgimic != null)
         {
-            if (mirrorInteract.Instance.gameObject.activeSelf)
+            if (mirrorgimic.activeSelf)
             {
-                if (!mirroronemore)
+                if (mirrorInteract.Instance.gameObject.activeSelf)
                 {
-                    soundManager.Instance.itemDropAudioSource.Play();
-                    mirroronemore = true;
+                    if (!mirroronemore)
+                    {
+                        soundManager.Instance.itemDropAudioSource.Play();
+                        mirroronemore = true;
+                    }
                 }
             }
         }
@@ -130,6 +133,7 @@ public class player : MonoBehaviour
                 if (!BoxInteract.Instance.isShow)
                 {
                     boxCloseMonster.Instance.monstershow();
+                    gameObject.transform.position = new Vector3(120, 21, 49);
                     story5.Instance.startt();
                     BoxInteract.Instance.isShow = true;
                 }
@@ -169,7 +173,13 @@ public class player : MonoBehaviour
                 ui = false;
                 move = true;
                 RotateToMouse.Instance.anglepause = true;
+                storyNail.Instance.miirorON();
                 RotateToMouse.Instance.pause = true;
+                if (OpenChestInteract.Instance.dd)
+                {
+                    storyNail.Instance.ss();
+                    OpenChestInteract.Instance.dd=false;
+                }
             }
 
             if (offeringUI.Instance.gameObject.activeSelf)

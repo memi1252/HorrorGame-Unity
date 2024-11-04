@@ -19,6 +19,8 @@ public class carmove : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().enabled = false;
             transform.Translate(Vector3.right * Time.deltaTime * speed);
+            soundManager.Instance.walkAudioSource.Stop();
+            soundManager.Instance.runAudioSource.Stop();
         }
     }
 }

@@ -20,7 +20,7 @@ public class StoryUI : MonoBehaviour
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
             PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
             //flash.Instance.pickUpFlash = false;
-            SceneManager.LoadScene("Map");
+            LoadingBar.LoadScene("Map");
         });
         clostButton.onClick.AddListener(() =>
         {

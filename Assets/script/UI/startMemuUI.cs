@@ -19,7 +19,7 @@ public class startMemuUI : MonoBehaviour
         {
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
             PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
-            SceneManager.LoadScene("Mainlobby");
+            LoadingBar.LoadScene("Mainlobby");
         });
         exitButton.onClick.AddListener(() => { Application.Quit(); });
         settingButton.onClick.AddListener(() => { settingUI.Instance.Show(); });

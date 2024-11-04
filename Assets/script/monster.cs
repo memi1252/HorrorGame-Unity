@@ -52,6 +52,7 @@ public class monster : MonoBehaviour
             if (!monsterdie)
             {
                 target = gameObject.transform;
+                player.Instance.move = false;
                 animator.SetBool("monserAlterDIe", true);
                 offeringUI.Instance.Hide();
                 player.Instance.gameObject.GetComponent<LookAtCamera>().enabled = true;
@@ -119,7 +120,7 @@ public class monster : MonoBehaviour
 
     private IEnumerator sdsd()
     {
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(3.5f);
         player.Instance.gameObject.GetComponent<LookAtCamera>().enabled = false;
         RotateToMouse.Instance.anglepause = true;
         RotateToMouse.Instance.pause = true;

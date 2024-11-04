@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class DiaryUI : MonoBehaviour
 {
-    [SerializeField] private Button closeButton;
     public static DiaryUI Instance { get; private set; }
     
     public bool isdiary = false;
@@ -12,14 +11,6 @@ public class DiaryUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        closeButton.onClick.AddListener(() =>
-        {
-            Hide();
-            Time.timeScale = 1;
-            RotateToMouse.Instance.anglepause = true;
-            RotateToMouse.Instance.pause = true;
-        });
     }
 
     private void Start()
@@ -41,7 +32,9 @@ public class DiaryUI : MonoBehaviour
         gameObject.SetActive(true);
         player.Instance.h = 0;
         player.Instance.v = 0;
+        RotateToMouse.Instance.anglepause = false;
         RotateToMouse.Instance.pause = false;
+        Time.timeScale = 0;
         isdiary = true;
     }
 
@@ -49,7 +42,9 @@ public class DiaryUI : MonoBehaviour
     public void Hide()
     {
         player.Instance.ui = false;
-        gameObject.SetActive(false);
+        Time.timeScale = 1;
+        RotateToMouse.Instance.anglepause = true;
         RotateToMouse.Instance.pause = true;
+        gameObject.SetActive(false);
     }
 }

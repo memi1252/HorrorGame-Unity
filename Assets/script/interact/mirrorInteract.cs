@@ -14,5 +14,6 @@ public class mirrorInteract : MonoBehaviour
     {
         InventoryUI.Instance.mirror = true;
         storyMirror.Instance.ss();
+        player.Instance.mirrorgimic = null;
     }
 }

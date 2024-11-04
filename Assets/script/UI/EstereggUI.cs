@@ -20,7 +20,8 @@ public class EstereggUI : MonoBehaviour
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
             PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
             Time.timeScale = 1;
-            SceneManager.LoadScene("Mainlobby");
+            RotateToMouse.Instance.pause = true;
+            LoadingBar.LoadScene("Mainlobby");
         });
         endingButton.onClick.AddListener(() =>
         {
@@ -28,12 +29,13 @@ public class EstereggUI : MonoBehaviour
             soundManager.Instance.walkAudioSource.Stop();
             soundManager.Instance.runAudioSource.Stop();
             Time.timeScale = 1;
-            SceneManager.LoadScene("finalScene");
+            LoadingBar.LoadScene("finalScene");
         });
         continueButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1;
             soundManager.Instance.audioSource.Play();
+            RotateToMouse.Instance.pause = true;
             Hide();
         });
     }

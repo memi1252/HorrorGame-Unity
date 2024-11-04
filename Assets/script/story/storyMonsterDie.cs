@@ -37,6 +37,7 @@ public class storyMonsterDie : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         storyText.text = "주인공 : 어,,, ";
+        DirLight.transform.GetComponent<Light>().enabled = true;
         DirLight.transform.GetComponent<Light>().intensity = 1;
         DirLight.transform.Rotate(20, 0, 0);
         StartCoroutine(sto3());
@@ -47,7 +48,6 @@ public class storyMonsterDie : MonoBehaviour
         yield return new WaitForSeconds(3f);
         storyText.text = "주인공 : 어 아침이 되고 있어!!";
         DirLight.transform.Rotate(20, 0, 0);
-        car.SetActive(true);
         StartCoroutine(sto4());
     }
     
@@ -58,13 +58,13 @@ public class storyMonsterDie : MonoBehaviour
         storyText.text = "주인공 : 드디어 나갈 수 있는 건가?";
         RenderSettings.skybox = sunSkyBox;
         DirLight.transform.Rotate(15, 0, 0);
-        car.SetActive(true);
         StartCoroutine(sto5());
     }
     
     private IEnumerator sto5()
     {
         yield return new WaitForSeconds(3f);
+        car.SetActive(true);
         player.Instance.gameObject.GetComponent<LookAtCamera>().enabled = true;
         player.Instance.gameObject.GetComponent<LookAtCamera>().monster1 =
             player.Instance.gameObject.GetComponent<LookAtCamera>().frend;

@@ -20,6 +20,6 @@ public class storyfinal : MonoBehaviour
     IEnumerator finalSecen()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("finalScene");
+        LoadingBar.LoadScene("finalScene");
     }
 }

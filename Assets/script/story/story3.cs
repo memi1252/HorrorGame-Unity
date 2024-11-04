@@ -42,21 +42,21 @@ public class story3 : MonoBehaviour
 
     private IEnumerator sto2()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         storyText.text = "주인공 : 뭐지 잘못 봤나,,";
         StartCoroutine(sto3());
     }
 
     private IEnumerator sto3()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         storyText.text = "주인공 : 무서운데 여기서 빨리 나가야겠다.";
         StartCoroutine(sto4());
     }
 
     private IEnumerator sto4()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         Hide();
         StoryLineUI.Instance.Hide();
     }

@@ -10,7 +10,7 @@ public class storysign : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI storyText;
 
-    public bool esteregg;
+    public bool esteregg =false;
 
     private void Awake()
     {

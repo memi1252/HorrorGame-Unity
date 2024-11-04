@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Loading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +9,6 @@ public class DieUI : MonoBehaviour
     [SerializeField] private Button ReStartButton;
     [SerializeField] private Button MainMenuButton;
     [SerializeField] private TextMeshProUGUI SurvivalTImeText;
-    [SerializeField] private TextMeshProUGUI itemIndexText;
     public static DieUI Instance { get; private set; }
 
     private int number;
@@ -21,13 +21,13 @@ public class DieUI : MonoBehaviour
         {
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
             PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
-            SceneManager.LoadScene("main");
+            LoadingBar.LoadScene("main");
         });
         MainMenuButton.onClick.AddListener(() =>
         {
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
             PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
-            SceneManager.LoadScene("Mainlobby");
+            LoadingBar.LoadScene("Mainlobby");
         });
     }
 
@@ -42,7 +42,6 @@ public class DieUI : MonoBehaviour
         soundManager.Instance.runAudioSource.Stop();
         SurvivalTImeText.text =
             $"생존 시간 :{(int)playTime.Instance.playTimes / 60}:{(int)playTime.Instance.playTimes % 60}";
-        itemIndexText.text = $"획득한 아이템 수 : {number}";
         player.Instance.h = 0;
         player.Instance.v = 0;
     }
@@ -54,24 +53,14 @@ public class DieUI : MonoBehaviour
         player.Instance.v = 0;
         player.Instance.ui = true;
         pauseUI.Instance.pauseUIpasue = false;
-        if (InventoryUI.Instance.flash)
-            number++;
-        if (InventoryUI.Instance.cross)
-            number++;
-        if (InventoryUI.Instance.eraser)
-            number++;
-        if (InventoryUI.Instance.baseBall)
-            number++;
-        if (InventoryUI.Instance.nail)
-            number++;
-        if (InventoryUI.Instance.mirror)
-            number++;
+        StoryLineUI.Instance.Hide();
+        
     }
 
     public void Hide()
     {
-        gameObject.SetActive(false);
         player.Instance.ui = false;
         pauseUI.Instance.pauseUIpasue = true;
+        gameObject.SetActive(false);
     }
 }
