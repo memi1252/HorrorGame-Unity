@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,6 +8,9 @@ public class player : MonoBehaviour
 {
     [SerializeField] private int moveSpeed;
     [SerializeField] public GameObject mirrorgimic;
+    [SerializeField] private ParticleSystem particleSystem = null;
+    [SerializeField] private GameObject alter;
+    [SerializeField] private GameObject flash;
     public GameObject itemPos;
     public bool isFlash;
     public bool isEraser;
@@ -23,6 +28,8 @@ public class player : MonoBehaviour
     
     private RotateToMouse rotateToMouse;
     private float time = 4f;
+    public bool restart = false;
+    private int a;
     
     int monseterDiecount = 0;
     
@@ -35,6 +42,9 @@ public class player : MonoBehaviour
 
         rotateToMouse = GetComponent<RotateToMouse>();
         playerAnimator = GetComponent<Animator>();
+        a = 0;
+        a = PlayerPrefs.GetInt("resstart");
+        
         Time.timeScale = 1;
     }
 
@@ -66,8 +76,44 @@ public class player : MonoBehaviour
                 }
             }
         }
+
+        if (a == 1)
+        {
+            restart = true;
+        }
+        else
+        {
+            restart = false;
+        }
+        
+        
+        if (restart)
+        {
+            gameObject.transform.position = new Vector3(-28, 20, -300);
+            gameObject.transform.rotation = new Quaternion(0, -178, 0, 0);
+            RotateToMouse.Instance.pause = true;
+            RotateToMouse.Instance.anglepause = true;
+            InventoryUI.Instance.baseBall = true;
+            InventoryUI.Instance.eraser = true;
+            InventoryUI.Instance.cross = true;
+            InventoryUI.Instance.nail = true;
+            InventoryUI.Instance.mirror = true;
+            flash.SetActive(true);
+            StartCoroutine(d());
+            
+            a = 0;
+            Debug.Log("ddd");
+            PlayerPrefs.SetInt("resstart", 0);
+            restart = false;
+        }
     }
 
+    private IEnumerator d()
+    {
+        yield return new WaitForSeconds(1f);
+        alter.SetActive(true);
+    }
+    
     private void UpdateRotate()
     {
         mouseX = Input.GetAxis("Mouse X");
@@ -89,6 +135,18 @@ public class player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift)) moveSpeed = 8;
         if (Input.GetKeyUp(KeyCode.LeftShift)) moveSpeed = 3;
+
+        if (particleSystem != null)
+        {
+            if (h > 0 || v > 0)
+            {
+                particleSystem.Play();
+            }
+            else
+            {
+                particleSystem.Stop();
+            }
+        }
     }
 
     private void Pause()
@@ -101,7 +159,8 @@ public class player : MonoBehaviour
                                                  && !OpenChestUI.Instance.gameObject.activeSelf &&
                                                  !settingUI.Instance.gameObject.activeSelf
                                                  && !boxUI.Instance.gameObject.activeSelf &&
-                                                 !offeringUI.Instance.gameObject.activeSelf)
+                                                 !offeringUI.Instance.gameObject.activeSelf
+                                                 && !AlterTutorialUI.Instance.gameObject.activeSelf)
             {
                 if (pauseUI.Instance.gameObject.activeSelf)
                 {

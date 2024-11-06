@@ -198,6 +198,15 @@ public class offeringUI : MonoBehaviour
         soundManager.Instance.walkAudioSource.Stop();
         soundManager.Instance.runAudioSource.Stop();
         offeringInventory();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            offeringUI.Instance.Hide();
+            RotateToMouse.Instance.anglepause = true;
+            RotateToMouse.Instance.pause = true;
+            player.Instance.ui = false;
+            player.Instance.move = true;
+        }
     }
 
     private void no()

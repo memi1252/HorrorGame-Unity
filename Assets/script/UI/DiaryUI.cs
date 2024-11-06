@@ -24,6 +24,11 @@ public class DiaryUI : MonoBehaviour
         soundManager.Instance.runAudioSource.Stop();
         player.Instance.h = 0;
         player.Instance.v = 0;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Hide();
+        }
     }
 
     public void Show()

@@ -8,6 +8,7 @@ public class storyMonsterDie : MonoBehaviour
     [SerializeField] private GameObject car;
     [SerializeField] private GameObject DirLight;
     [SerializeField] private Material sunSkyBox;
+    [SerializeField] private GameObject[] frend = new GameObject[2];
     
     public static storyMonsterDie Instance { get; private set; }
 
@@ -21,7 +22,8 @@ public class storyMonsterDie : MonoBehaviour
     public void ss()
     {
         StartCoroutine(sto1());
-        DirLight.transform.Rotate(20, 0, 0);
+        DirLight.gameObject.SetActive(true);
+        DirLight.transform.Rotate(40, 0, 0);
     }
     
     private IEnumerator sto1()
@@ -29,7 +31,7 @@ public class storyMonsterDie : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         StoryLineUI.Instance.Show();
         storyText.text = "주인공 : 어 봉인된 건가?";
-        DirLight.transform.Rotate(20, 0, 0);
+        DirLight.transform.Rotate(40, 0, 0);
         StartCoroutine(sto2());
     }
 
@@ -39,7 +41,7 @@ public class storyMonsterDie : MonoBehaviour
         storyText.text = "주인공 : 어,,, ";
         DirLight.transform.GetComponent<Light>().enabled = true;
         DirLight.transform.GetComponent<Light>().intensity = 1;
-        DirLight.transform.Rotate(20, 0, 0);
+        DirLight.transform.Rotate(40, 0, 0);
         StartCoroutine(sto3());
     }
     
@@ -47,7 +49,8 @@ public class storyMonsterDie : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         storyText.text = "주인공 : 어 아침이 되고 있어!!";
-        DirLight.transform.Rotate(20, 0, 0);
+        DirLight.gameObject.SetActive(true);
+        DirLight.transform.Rotate(40, 0, 0);
         StartCoroutine(sto4());
     }
     
@@ -57,7 +60,7 @@ public class storyMonsterDie : MonoBehaviour
         yield return new WaitForSeconds(3f);
         storyText.text = "주인공 : 드디어 나갈 수 있는 건가?";
         RenderSettings.skybox = sunSkyBox;
-        DirLight.transform.Rotate(15, 0, 0);
+        DirLight.transform.Rotate(30, 0, 0);
         StartCoroutine(sto5());
     }
     
@@ -105,6 +108,8 @@ public class storyMonsterDie : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         storyText.text = "친구들 : 야 빨리 타!";
+        frend[0].SetActive(false);
+        frend[1].SetActive(false);
         StartCoroutine(sto11());
     }
 

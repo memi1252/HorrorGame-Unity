@@ -41,6 +41,15 @@ public class StoryUI : MonoBehaviour
         soundManager.Instance.runAudioSource.Stop();
         player.Instance.h = 0;
         player.Instance.v = 0;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Hide();
+            Time.timeScale = 1;
+            RotateToMouse.Instance.anglepause = true;
+            pauseUI.Instance.pauseUIpasue = false;
+            storyinteract.Instance.interact = false;
+        }
     }
 
     public void Show()

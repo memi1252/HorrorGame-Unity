@@ -21,7 +21,8 @@ public class DieUI : MonoBehaviour
         {
             PlayerPrefs.SetFloat("BGM", settingUI.Instance.BGMSlider.value);
             PlayerPrefs.SetFloat("Effect", settingUI.Instance.EffectSlider.value);
-            LoadingBar.LoadScene("main");
+            PlayerPrefs.SetInt("resstart", 1);
+            LoadingBar.LoadScene("Map");
         });
         MainMenuButton.onClick.AddListener(() =>
         {

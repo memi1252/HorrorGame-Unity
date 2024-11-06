@@ -77,6 +77,21 @@ public class boxUI : MonoBehaviour
             Hide();
             pauseUI.Instance.Hide();
         }
+        
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Hide();
+            player.Instance.ui = false;
+            RotateToMouse.Instance.anglepause = true;
+            RotateToMouse.Instance.pause = true;
+            if (!BoxInteract.Instance.isShow)
+            { 
+                boxCloseMonster.Instance.monstershow(); 
+                player.Instance.gameObject.transform.position = new Vector3(120, 21, 49);
+                story5.Instance.startt();
+                BoxInteract.Instance.isShow = true;
+            }
+        }
 
         if (InventoryUI.Instance.flash)
         {

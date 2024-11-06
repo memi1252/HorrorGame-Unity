@@ -108,6 +108,20 @@ public class OpenChestUI : MonoBehaviour
         if (InventoryUI.Instance.eraser) eraserInventoryBoxButton.gameObject.SetActive(true);
         if (InventoryUI.Instance.cross) crossInventoryBoxButton.gameObject.SetActive(true);
         if (InventoryUI.Instance.baseBall) baseBallInventoryBoxButton.gameObject.SetActive(true);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (OpenChestInteract.Instance.dd)
+            {
+                storyNail.Instance.ss();
+                OpenChestInteract.Instance.dd=false;
+            }
+            OpenChestUI.Instance.Hide();
+            player.Instance.ui = false;
+            RotateToMouse.Instance.anglepause = true;
+            RotateToMouse.Instance.pause = true;
+            player.Instance.move = true;
+        }
     }
 
     public void Show()

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class altarIN : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class altarIN : MonoBehaviour
     private Animator animator;
     private bool dd;
     private float time = 13f;
+    public NavMeshAgent monsternav;
     public static altarIN Instance { get; private set; }
 
 
@@ -19,6 +22,7 @@ public class altarIN : MonoBehaviour
     {
         Instance = this;
         monster.SetActive(false);
+        monsternav = monster.transform.GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -61,6 +65,11 @@ public class altarIN : MonoBehaviour
                 RenderSettings.fogDensity = 0.008f;
                 dd = true;
             }
+        }
+
+        if (other.CompareTag("monster"))
+        {
+            monsternav.speed = 4;
         }
     }
 

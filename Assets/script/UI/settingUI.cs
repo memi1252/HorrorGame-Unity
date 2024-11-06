@@ -19,6 +19,7 @@ public class settingUI : MonoBehaviour
         player.Instance.v = 0;
         soundManager.Instance.walkAudioSource.Stop();
         soundManager.Instance.runAudioSource.Stop();
+        
     }
 
     public void Show()
