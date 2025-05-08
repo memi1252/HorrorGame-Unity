@@ -23,15 +23,7 @@ E	상호작용 (문 열기, 아이템 줍기 등)
 ESC	일시정지
 
 📦 설치 및 실행 방법
-이 저장소를 클론하거나 ZIP으로 다운로드:
-
-bash
-복사
-편집
-git clone https://github.com/memi1252/HorrorGame-Unity.git
-Unity Hub에서 프로젝트 열기 (권장 버전: Unity 20XX.X.XfX)
-
-Scenes/MainScene을 실행해 게임 시작
+https://cicada1252.itch.io/bluehead-horror
 
 
 🛠️ 사용 기술
